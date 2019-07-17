@@ -73,6 +73,8 @@
 
     <property name="capacity" column="CAPACITY"/>
 
+    <property name="lastMaintained" column="LAST_MAINTAINED"/>
+
     <set name="childContainers" table="OS_STORAGE_CONTAINERS" inverse="true" cascade="all-delete-orphan">
       <key column="PARENT_CONTAINER_ID"/>
       <one-to-many  class="com.krishagni.catissueplus.core.administrative.domain.StorageContainer" />

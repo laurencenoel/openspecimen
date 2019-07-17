@@ -90,7 +90,9 @@ public enum StorageContainerErrorCode implements ErrorCode {
 
 	USAGE_DIFFER,
 
-	NONE_PRINTED;
+	NONE_PRINTED,
+
+	LAST_MAINTAINED_AFTER_CURR_DATE;
 
 	@Override
 	public String code() {

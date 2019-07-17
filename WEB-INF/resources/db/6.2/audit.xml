@@ -225,4 +225,13 @@
       <column name="PATHOLOGY_STATUS_ID" type="${int.type}"/>
     </addColumn>
   </changeSet>
+
+  <!-- Container Maintenance -->
+
+  <changeSet author="single" id="Container Maintenance: Added column to persist the last maintenance date">
+    <addColumn tableName="OS_STORAGE_CONTAINERS_AUD">
+      <column name="LAST_MAINTAINED" type="${timestamp.type}"/>
+      <column name="lastMaintained_MOD" type="BIT"/>
+    </addColumn>
+  </changeSet>
 </databaseChangeLog>

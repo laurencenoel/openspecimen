@@ -3,6 +3,7 @@ package com.krishagni.catissueplus.core.administrative.domain.factory.impl;
 import static com.krishagni.catissueplus.core.common.PvAttributes.SPECIMEN_CLASS;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -84,6 +85,7 @@ public class StorageContainerFactoryImpl implements StorageContainerFactory {
 		setAutomated(detail, existing, container, ose);
 		setAutoFreezerProvider(detail, existing, container, ose);
 		setCellDisplayProp(detail, existing, container, ose);
+		setLastMaintained(detail, existing, container, ose);
 		setExtension(detail, existing, container, ose);
 
 		if (!container.isDistributionContainer()) {
@@ -552,6 +554,25 @@ public class StorageContainerFactoryImpl implements StorageContainerFactory {
 		} else {
 			container.setCellDisplayProp(existing.getCellDisplayProp());
 		}
+	}
+
+	private void setLastMaintained(StorageContainerDetail detail, StorageContainer existing, StorageContainer container,
+			OpenSpecimenException ose) {
+		if (detail.isAttrModified("lastMaintained") || existing == null) {
+			setLastMaintained(detail, container, ose);
+		} else {
+			container.setLastMaintained(existing.getLastMaintained());
+		}
+	}
+
+	private void setLastMaintained(StorageContainerDetail detail, StorageContainer container,
+			OpenSpecimenException ose) {
+		if (detail.getLastMaintained() != null && detail.getLastMaintained().after(Calendar.getInstance().getTime())) {
+			ose.addError(StorageContainerErrorCode.LAST_MAINTAINED_AFTER_CURR_DATE);
+			return;
+		}
+
+		container.setLastMaintained(detail.getLastMaintained());
 	}
 
 	private void setExtension(StorageContainerDetail detail, StorageContainer container, OpenSpecimenException ose) {

@@ -164,6 +164,11 @@ public class StorageContainer extends BaseExtensionEntity {
 	private Set<StorageContainerPosition> occupiedPositions = new HashSet<>();
 
 	//
+	// Maintenance attributes
+	//
+	private Date lastMaintained;
+
+	//
 	// query capabilities
 	//
 	private StorageContainerStats stats;
@@ -543,6 +548,14 @@ public class StorageContainer extends BaseExtensionEntity {
 		return EXTN;
 	}
 
+	public Date getLastMaintained() {
+		return lastMaintained;
+	}
+
+	public void setLastMaintained(Date lastMaintained) {
+		this.lastMaintained = lastMaintained;
+	}
+
 	public void update(StorageContainer other) {
 		updateActivityStatus(other);
 		if (!isActive()) {
@@ -572,6 +585,7 @@ public class StorageContainer extends BaseExtensionEntity {
 		updateStoreSpecimenEnabled(other);
 		updateCellDisplayProp(other);
 		setExtension(other.getExtension());
+		setLastMaintained(other.getLastMaintained());
 		validateRestrictions();
 	}
 

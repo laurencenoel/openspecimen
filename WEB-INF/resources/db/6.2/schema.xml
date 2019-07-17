@@ -984,4 +984,12 @@
       <column name="WORKFLOWS" type="${clob.type}"/>
     </addColumn>
   </changeSet>
+
+  <!-- Container Maintenance -->
+
+  <changeSet author="single" id="Container Maintenance: Added column to persist the last maintenance date">
+    <addColumn tableName="OS_STORAGE_CONTAINERS">
+      <column name="LAST_MAINTAINED" type="${timestamp.type}"/>
+    </addColumn>
+  </changeSet>
 </databaseChangeLog>
