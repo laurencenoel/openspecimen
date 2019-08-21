@@ -28,6 +28,7 @@ import com.krishagni.catissueplus.core.administrative.domain.factory.UserErrorCo
 import com.krishagni.catissueplus.core.administrative.events.AutoFreezerProviderErrorCode;
 import com.krishagni.catissueplus.core.administrative.events.ContainerHierarchyDetail;
 import com.krishagni.catissueplus.core.administrative.events.StorageContainerDetail;
+import com.krishagni.catissueplus.core.administrative.events.ContainerMaintenance;
 import com.krishagni.catissueplus.core.administrative.events.StorageLocationSummary;
 import com.krishagni.catissueplus.core.biospecimen.domain.CollectionProtocol;
 import com.krishagni.catissueplus.core.biospecimen.domain.factory.SpecimenErrorCode;
@@ -85,7 +86,7 @@ public class StorageContainerFactoryImpl implements StorageContainerFactory {
 		setAutomated(detail, existing, container, ose);
 		setAutoFreezerProvider(detail, existing, container, ose);
 		setCellDisplayProp(detail, existing, container, ose);
-		setLastMaintained(detail, existing, container, ose);
+		setStorageContainerMaintenance(detail, existing, container, ose);
 		setExtension(detail, existing, container, ose);
 
 		if (!container.isDistributionContainer()) {
@@ -556,23 +557,26 @@ public class StorageContainerFactoryImpl implements StorageContainerFactory {
 		}
 	}
 
-	private void setLastMaintained(StorageContainerDetail detail, StorageContainer existing, StorageContainer container,
+	private void setStorageContainerMaintenance(StorageContainerDetail detail, StorageContainer existing, StorageContainer container,
 			OpenSpecimenException ose) {
-		if (detail.isAttrModified("lastMaintained") || existing == null) {
-			setLastMaintained(detail, container, ose);
+		if (detail.isAttrModified("containerMaintenance") || existing == null) {
+			setStorageContainerMaintenance(detail, container, ose);
 		} else {
-			container.setLastMaintained(existing.getLastMaintained());
+			container.setContainerMaintenance(existing.getContainerMaintenance());
 		}
 	}
 
-	private void setLastMaintained(StorageContainerDetail detail, StorageContainer container,
+	private void setStorageContainerMaintenance(StorageContainerDetail detail, StorageContainer container,
 			OpenSpecimenException ose) {
-		if (detail.getLastMaintained() != null && detail.getLastMaintained().after(Calendar.getInstance().getTime())) {
+		ContainerMaintenance storageContainerMaintenance = detail.getContainerMaintenance();
+
+		if (storageContainerMaintenance != null && storageContainerMaintenance.getLastMaintained().after(Calendar.getInstance().getTime())) {
 			ose.addError(StorageContainerErrorCode.LAST_MAINTAINED_AFTER_CURR_DATE);
 			return;
 		}
 
-		container.setLastMaintained(detail.getLastMaintained());
+		storageContainerMaintenance.setStorageContainer(container);
+		container.setContainerMaintenance(storageContainerMaintenance);
 	}
 
 	private void setExtension(StorageContainerDetail detail, StorageContainer container, OpenSpecimenException ose) {

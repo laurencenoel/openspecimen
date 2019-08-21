@@ -989,7 +989,36 @@
 
   <changeSet author="single" id="Container Maintenance: Added column to persist the last maintenance date">
     <addColumn tableName="OS_STORAGE_CONTAINERS">
-      <column name="LAST_MAINTAINED" type="${timestamp.type}"/>
+      <column name="CONTAINER_MAINTENANCE_ID" type="${int.type}"/>
     </addColumn>
+  </changeSet>
+
+  <changeSet author="single" id="Container maintenance entity table" failOnError="true">
+	<createTable tableName="OS_CONTAINER_MAINTENANCE">
+		<column name="IDENTIFIER" type="${int.type}" autoIncrement="${autoIncrement}">
+			<constraints primaryKey="true" nullable="false"/>
+		</column>
+
+		<column name="LAST_MAINTAINED" type="${timestamp.type}"/>
+		<column name="STORAGE_CONTAINER_ID" type="${int.type}"/>
+	</createTable>
+  </changeSet>
+
+  <changeSet author="single" id="Add FK to storage container">
+    <addForeignKeyConstraint
+      constraintName="FK_OS_STORAGE_CONTAINER_ID"
+      baseTableName="OS_CONTAINER_MAINTENANCE"
+      baseColumnNames="STORAGE_CONTAINER_ID"
+      referencedTableName="OS_STORAGE_CONTAINERS"
+      referencedColumnNames="IDENTIFIER" />
+  </changeSet>
+
+  <changeSet author="single" id="Add FK to container maintenance table">
+    <addForeignKeyConstraint
+      constraintName="FK_CONTAINER_MAINTENANCE_ID"
+      baseTableName="OS_STORAGE_CONTAINERS"
+      baseColumnNames="CONTAINER_MAINTENANCE_ID"
+      referencedTableName="OS_CONTAINER_MAINTENANCE"
+      referencedColumnNames="IDENTIFIER" />
   </changeSet>
 </databaseChangeLog>

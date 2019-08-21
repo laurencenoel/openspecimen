@@ -24,6 +24,7 @@ import org.hibernate.envers.NotAudited;
 import org.hibernate.envers.RelationTargetAuditMode;
 
 import com.krishagni.catissueplus.core.administrative.domain.factory.StorageContainerErrorCode;
+import com.krishagni.catissueplus.core.administrative.events.ContainerMaintenance;
 import com.krishagni.catissueplus.core.administrative.repository.ContainerRestrictionsCriteria;
 import com.krishagni.catissueplus.core.administrative.repository.StorageContainerDao;
 import com.krishagni.catissueplus.core.biospecimen.domain.BaseExtensionEntity;
@@ -166,7 +167,7 @@ public class StorageContainer extends BaseExtensionEntity {
 	//
 	// Maintenance attributes
 	//
-	private Date lastMaintained;
+	private ContainerMaintenance containerMaintenance;
 
 	//
 	// query capabilities
@@ -548,12 +549,13 @@ public class StorageContainer extends BaseExtensionEntity {
 		return EXTN;
 	}
 
-	public Date getLastMaintained() {
-		return lastMaintained;
+	@NotAudited
+	public ContainerMaintenance getContainerMaintenance() {
+		return containerMaintenance;
 	}
 
-	public void setLastMaintained(Date lastMaintained) {
-		this.lastMaintained = lastMaintained;
+	public void setContainerMaintenance(ContainerMaintenance containerMaintenance) {
+		this.containerMaintenance = containerMaintenance;
 	}
 
 	public void update(StorageContainer other) {
@@ -585,7 +587,7 @@ public class StorageContainer extends BaseExtensionEntity {
 		updateStoreSpecimenEnabled(other);
 		updateCellDisplayProp(other);
 		setExtension(other.getExtension());
-		setLastMaintained(other.getLastMaintained());
+		updateMaintenance(other.getContainerMaintenance());
 		validateRestrictions();
 	}
 
@@ -1169,6 +1171,7 @@ public class StorageContainer extends BaseExtensionEntity {
 		copy.setCompAllowedSpecimenTypes(computeAllowedSpecimenTypes());
 		copy.setCompAllowedCps(computeAllowedCps());
 		copy.setCompAllowedDps(computeAllowedDps());
+		copy.setContainerMaintenance(getContainerMaintenance());
 		copyExtensionTo(copy);
 		return copy;
 	}
@@ -1567,6 +1570,18 @@ public class StorageContainer extends BaseExtensionEntity {
 		}
 
 		updateCellDisplayProp(this, other.getCellDisplayProp());
+	}
+
+	private void updateMaintenance(ContainerMaintenance maintenance) {
+		if (maintenance == null) {
+			return;
+		}
+
+		if (maintenance.getLastMaintained().after(Calendar.getInstance().getTime())) {
+			throw OpenSpecimenException.userError(StorageContainerErrorCode.LAST_MAINTAINED_AFTER_CURR_DATE);
+		}
+
+		setContainerMaintenance(maintenance);
 	}
 
 	private void updateCellDisplayProp(StorageContainer container, CellDisplayProp cellDisplayProp) {

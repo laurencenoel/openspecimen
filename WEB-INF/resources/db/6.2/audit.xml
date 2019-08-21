@@ -227,6 +227,22 @@
   </changeSet>
 
   <!-- Container Maintenance -->
+  
+  <changeSet author="single" id="Container Maintenance: Added audit table">
+  	<createTable tableName="OS_CONTAINER_MAINTENANCE_AUD">
+  		<column name="IDENTIFIER" type="BIGINT">
+      		<constraints nullable="false"/>
+      	</column>
+        <column name="REV" type="BIGINT">
+        	<constraints nullable="false"/>
+       	</column>
+       	<column name="REVTYPE" type="TINYINT"/>
+    	<column name="LAST_MAINTAINED" type="${timestamp.type}"/>
+    	<column name="lastMaintained_MOD" type="BIT"/>
+    	<column name="STORAGE_CONTAINER_ID" type="${int.type}"/>
+    	<column name="storageContainer_MOD" type="BIT"/>
+  	</createTable>
+  </changeSet>
 
   <changeSet author="single" id="Container Maintenance: Added column to persist the last maintenance date">
     <addColumn tableName="OS_STORAGE_CONTAINERS_AUD">

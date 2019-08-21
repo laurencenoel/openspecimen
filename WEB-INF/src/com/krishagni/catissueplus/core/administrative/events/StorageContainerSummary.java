@@ -2,7 +2,6 @@ package com.krishagni.catissueplus.core.administrative.events;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -63,8 +62,6 @@ public class StorageContainerSummary extends AttributeModifiedSupport {
 
 	private String autoFreezerProvider;
 	
-	private Date lastMaintained;
-
 	private List<StorageContainerSummary> childContainers;
 
 	public Long getId() {
@@ -250,14 +247,6 @@ public class StorageContainerSummary extends AttributeModifiedSupport {
 		this.autoFreezerProvider = autoFreezerProvider;
 	}
 
-	public Date getLastMaintained() {
-		return lastMaintained;
-	}
-
-	public void setLastMaintained(Date lastMaintained) {
-		this.lastMaintained = lastMaintained;
-	}
-
 	public List<StorageContainerSummary> getChildContainers() {
 		return childContainers;
 	}
@@ -287,7 +276,6 @@ public class StorageContainerSummary extends AttributeModifiedSupport {
 		result.setFreePositions(container.freePositionsCount());
 		result.setStoreSpecimensEnabled(container.isStoreSpecimenEnabled());
 		result.setAutomated(container.isAutomated());
-		result.setLastMaintained(container.getLastMaintained());
 
 		if (container.getAutoFreezerProvider() != null) {
 			result.setAutoFreezerProvider(container.getAutoFreezerProvider().getName());
