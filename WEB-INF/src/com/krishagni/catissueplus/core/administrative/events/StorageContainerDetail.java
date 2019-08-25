@@ -26,7 +26,7 @@ public class StorageContainerDetail extends StorageContainerSummary {
 
 	private ExtensionDetail extensionDetail;
 
-	private ContainerMaintenance containerMaintenance;
+	private ContainerMaintenanceDetail maintenanceDetail;
 
 	private Set<String> allowedSpecimenClasses = new HashSet<>();
 	
@@ -170,12 +170,12 @@ public class StorageContainerDetail extends StorageContainerSummary {
 		this.printLabels = printLabels;
 	}
 
-	public ContainerMaintenance getContainerMaintenance() {
-		return containerMaintenance;
+	public ContainerMaintenanceDetail getMaintenanceDetail() {
+		return maintenanceDetail;
 	}
 
-	public void setContainerMaintenance(ContainerMaintenance containerMaintenance) {
-		this.containerMaintenance = containerMaintenance;
+	public void setMaintenanceDetail(ContainerMaintenanceDetail maintenanceDetail) {
+		this.maintenanceDetail = maintenanceDetail;
 	}
 
 	public static StorageContainerDetail from(StorageContainer container) {
@@ -204,7 +204,10 @@ public class StorageContainerDetail extends StorageContainerSummary {
 		result.setCalcAllowedDistributionProtocols(getDpNames(container.getCompAllowedDps()));
 		
 		result.setOccupiedPositions(container.occupiedPositionsOrdinals());
-		result.setContainerMaintenance(container.getContainerMaintenance());
+
+		if (container.getContainerMaintenance() != null) {
+			result.setMaintenanceDetail(ContainerMaintenanceDetail.from(container.getContainerMaintenance()));
+		}
 
 		return result;
 	}

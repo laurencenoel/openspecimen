@@ -1006,7 +1006,7 @@
 
   <changeSet author="single" id="Add FK to storage container">
     <addForeignKeyConstraint
-      constraintName="FK_OS_STORAGE_CONTAINER_ID"
+      constraintName="FK_MAINT_CONTAINER_ID"
       baseTableName="OS_CONTAINER_MAINTENANCE"
       baseColumnNames="STORAGE_CONTAINER_ID"
       referencedTableName="OS_STORAGE_CONTAINERS"
@@ -1015,7 +1015,7 @@
 
   <changeSet author="single" id="Add FK to container maintenance table">
     <addForeignKeyConstraint
-      constraintName="FK_CONTAINER_MAINTENANCE_ID"
+      constraintName="FK_STORAGE_CONT_MAINTENANCE_ID"
       baseTableName="OS_STORAGE_CONTAINERS"
       baseColumnNames="CONTAINER_MAINTENANCE_ID"
       referencedTableName="OS_CONTAINER_MAINTENANCE"

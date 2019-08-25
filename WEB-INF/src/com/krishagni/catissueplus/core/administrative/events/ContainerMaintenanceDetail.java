@@ -43,10 +43,14 @@ public class ContainerMaintenanceDetail extends AttributeModifiedSupport {
 	public static ContainerMaintenanceDetail from(ContainerMaintenance containerMaintenance) {
 		ContainerMaintenanceDetail result = new ContainerMaintenanceDetail();
 		
+		result.setId(containerMaintenance.getId());
 		result.setLastMaintained(containerMaintenance.getLastMaintained());
-		result.setStorageContainerId(containerMaintenance.getStorageContainer().getId());
 		result.setOpComments(containerMaintenance.getOpComments());
 		
+		if (containerMaintenance.getStorageContainer() != null) {
+			result.setStorageContainerId(containerMaintenance.getStorageContainer().getId());
+		}
+
 		return result;
 	}
 }

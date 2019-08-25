@@ -74,11 +74,10 @@
     <property name="capacity" column="CAPACITY"/>
 
     <one-to-one
-    	name="containerMaintenance"
-    	class="com.krishagni.catissueplus.core.administrative.events.ContainerMaintenance"
-    	cascade="save-update"
-    	property-ref="storageContainer"
-    	fetch="join"/>
+      name="containerMaintenance"
+      class="com.krishagni.catissueplus.core.administrative.events.ContainerMaintenance"
+      property-ref="storageContainer"
+      cascade="save-update"/>
     
     <set name="childContainers" table="OS_STORAGE_CONTAINERS" inverse="true" cascade="all-delete-orphan">
       <key column="PARENT_CONTAINER_ID"/>

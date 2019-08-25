@@ -1581,6 +1581,7 @@ public class StorageContainer extends BaseExtensionEntity {
 			throw OpenSpecimenException.userError(StorageContainerErrorCode.LAST_MAINTAINED_AFTER_CURR_DATE);
 		}
 
+		maintenance.setStorageContainer(this);
 		setContainerMaintenance(maintenance);
 	}
 
