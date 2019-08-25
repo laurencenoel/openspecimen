@@ -994,14 +994,14 @@
   </changeSet>
 
   <changeSet author="single" id="Container maintenance entity table" failOnError="true">
-	<createTable tableName="OS_CONTAINER_MAINTENANCE">
-		<column name="IDENTIFIER" type="${int.type}" autoIncrement="${autoIncrement}">
-			<constraints primaryKey="true" nullable="false"/>
-		</column>
+    <createTable tableName="OS_CONTAINER_MAINTENANCE">
+      <column name="IDENTIFIER" type="${int.type}" autoIncrement="${autoIncrement}">
+        <constraints primaryKey="true" nullable="false"/>
+      </column>
 
-		<column name="LAST_MAINTAINED" type="${timestamp.type}"/>
-		<column name="STORAGE_CONTAINER_ID" type="${int.type}"/>
-	</createTable>
+      <column name="LAST_MAINTAINED" type="${timestamp.type}"/>
+      <column name="STORAGE_CONTAINER_ID" type="${int.type}"/>
+    </createTable>
   </changeSet>
 
   <changeSet author="single" id="Add FK to storage container">
