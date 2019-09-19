@@ -497,7 +497,7 @@ public class CollectionProtocolGroupServiceImpl implements CollectionProtocolGro
 		if (key == null) {
 			throw OpenSpecimenException.userError(FormErrorCode.NAME_REQUIRED);
 		} else if (form == null) {
-			throw OpenSpecimenException.userError(FormErrorCode.NOT_FOUND, key);
+			throw OpenSpecimenException.userError(FormErrorCode.NOT_FOUND, key, 1);
 		}
 
 		return form;

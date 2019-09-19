@@ -721,6 +721,23 @@ public class FormDaoImpl extends AbstractDao<FormContextBean> implements FormDao
 	}
 
 	@Override
+	public Map<String, List<Long>> getEntityFormRecordIds(Collection<String> entityTypes, Long objectId, Collection<String> formNames) {
+		List<Object[]> rows = getCurrentSession().getNamedQuery(GET_ENTITY_FORM_RECORD_IDS)
+			.setParameterList("formNames", formNames)
+			.setParameterList("entityTypes", entityTypes)
+			.setParameter("objectId", objectId)
+			.list();
+
+		Map<String, List<Long>> result = new HashMap<>();
+		for (Object[] row : rows) {
+			List<Long> recordIds = result.computeIfAbsent((String) row[0], (k) -> new ArrayList<>());
+			recordIds.add((Long) row[1]);
+		}
+
+		return result;
+	}
+
+	@Override
 	public List<Map<String, Object>> getRegistrationRecords(Long cpId, Collection<SiteCpPair> siteCps, Long formId, List<String> ppids, int startAt, int maxResults) {
 		return getEntityRecords(
 			cpId, siteCps, formId, GET_REG_FORM_RECORDS,
@@ -1130,6 +1147,8 @@ public class FormDaoImpl extends AbstractDao<FormContextBean> implements FormDao
 	private static final String SOFT_DELETE_ENTITY_RECS = RE_FQN + ".deleteEntityRecords";
 
 	private static final String SOFT_DELETE_CP_FORMS = FQN + ".deleteCpEntityForms";
+
+	private static final String GET_ENTITY_FORM_RECORD_IDS = RE_FQN + ".getEntityFormRecordIds";
 
 	//
 	// used for form records export

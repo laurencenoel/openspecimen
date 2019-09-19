@@ -331,7 +331,7 @@ public class DistributionProtocolFactoryImpl implements DistributionProtocolFact
 		if (form != null) {
 			dp.setOrderExtnForm(form);
 		} else if (key != null) {
-			ose.addError(FormErrorCode.NOT_FOUND, key);
+			ose.addError(FormErrorCode.NOT_FOUND, key, 1);
 		}
 	}
 

@@ -29,6 +29,7 @@ public class ExpressionUtil {
 		StandardEvaluationContext ctxt = new StandardEvaluationContext();
 		addMethods(ctxt);
 		ctxt.setVariables(variables);
+		ctxt.setVariable("collFns", new CollectionFunctions(variables));
 
 		SpelExpression expr = parse(exprStr);
 		return (T) expr.getValue(ctxt);
@@ -58,6 +59,52 @@ public class ExpressionUtil {
 			return methods;
 		} catch (Exception e) {
 			throw OpenSpecimenException.serverError(e);
+		}
+	}
+
+	private static class CollectionFunctions {
+		private Map<String, Object> ctxt;
+
+		CollectionFunctions(Map<String, Object> ctxt) {
+			this.ctxt = ctxt;
+		}
+
+		public boolean isEmpty(Collection<?> coll) {
+			return coll == null || coll.isEmpty();
+		}
+
+		public boolean isNotEmpty(Collection<?> coll) {
+			return !isEmpty(coll);
+		}
+
+		public boolean forEvery(Collection<?> coll, String elementName, String expression) {
+			return match(coll, elementName, expression, true);
+		}
+
+		public boolean forSome(Collection<?> coll, String elementName, String expression) {
+			return match(coll, elementName, expression, false);
+		}
+
+		private boolean match(Collection<?> coll, String elementName, String expression, boolean allMatch) {
+			Map<String, Object> localCtxt = new HashMap<>();
+			if (ctxt != null) {
+				localCtxt.putAll(ctxt);
+			}
+
+			if (coll == null || coll.isEmpty()) {
+				return false;
+			}
+
+			boolean truth = allMatch;
+			for (Object element : coll) {
+				localCtxt.put(elementName, element);
+				truth = ExpressionUtil.getInstance().evaluate(expression, localCtxt);
+				if ((allMatch && !truth) || (!allMatch && truth)) {
+					break;
+				}
+			}
+
+			return truth;
 		}
 	}
 }

@@ -4,7 +4,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -650,11 +649,6 @@ public class FormServiceImpl implements FormService, InitializingBean {
 	@Override
 	public FormData getRecord(Container form, Long recordId) {
 		return getRecord(form, null, null, null, recordId);
-	}
-
-	@Override
-	public List<FormData> getRecords(Container form, List<Long> recordIds) {
-		return formDataMgr.getFormData(form, recordIds);
 	}
 
 	@Override

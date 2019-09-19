@@ -1,5 +1,6 @@
 package com.krishagni.catissueplus.core.de.services;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -75,19 +76,21 @@ public interface FormService {
 	/**
 	 * Internal usage
 	 */
-	public List<FormData> getSummaryRecords(Long formId, List<Long> recordIds);
+	List<FormData> getSummaryRecords(Long formId, List<Long> recordIds);
 
-	public FormData getRecord(Container form, Long recordId);
+	FormData getRecord(Container form, Long recordId);
+
+	List<FormData> getRecords(Container form, List<Long> recordIds);
 	
-	public ResponseEvent<List<PermissibleValue>> getPvs(RequestEvent<GetFormFieldPvsOp> req);
+	ResponseEvent<List<PermissibleValue>> getPvs(RequestEvent<GetFormFieldPvsOp> req);
 
-	public void addFormContextProc(String entity, FormContextProcessor proc);
+	void addFormContextProc(String entity, FormContextProcessor proc);
 
-	public Map<String, Object> getExtensionInfo(Long cpId, String entityType);
+	Map<String, Object> getExtensionInfo(Long cpId, String entityType);
 
-	public Map<String, Object> getExtensionInfo(boolean cpBased, String entityType, Long entityId);
+	Map<String, Object> getExtensionInfo(boolean cpBased, String entityType, Long entityId);
 
-	public List<FormSummary> getEntityForms(Long cpId, String[] entityTypes);
+	List<FormSummary> getEntityForms(Long cpId, String[] entityTypes);
 
-	public void anonymizeRecord(Container form, Long recordId);
+	void anonymizeRecord(Container form, Long recordId);
 }

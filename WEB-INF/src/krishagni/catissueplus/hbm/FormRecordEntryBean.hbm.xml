@@ -190,5 +190,24 @@
         re.object_id in (:objectIds) and
         re.activity_status = 'ACTIVE'
     </sql-query>
+
+    <sql-query name="getEntityFormRecordIds">
+      <return-scalar column="formName" type="string"/>
+      <return-scalar column="recordId" type="long"/>
+
+      select
+        f.name as formName, re.record_id as recordId
+      from
+        catissue_form_record_entry re
+        inner join catissue_form_context fc on fc.identifier = re.form_ctxt_id
+        inner join dyextn_containers f on f.identifier = fc.container_id
+      where
+        f.name in (:formNames) and
+        fc.entity_type in (:entityTypes) and
+        re.object_id = :objectId and
+        f.deleted_on is null and
+        fc.deleted_on is null and
+        re.activity_status = 'ACTIVE'
+    </sql-query>
   </class>
 </hibernate-mapping>
