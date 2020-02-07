@@ -123,6 +123,34 @@
         <div os-field-error field="derivativeForm.label"></div>
       </div>
     </div>
+	
+	    <div class="form-group">
+      <label class="col-xs-3 control-label" translate="specimens.created_on">Created On</label>
+      <div class="col-xs-6">
+        <div class="os-date-time clearfix">
+          <div class="os-col-65 os-no-padding input">
+            <os-date-picker name="createdOn" date="derivative.createdOn"
+              placeholder="{{'specimens.created_on' | translate}}" required>
+            </os-date-picker>
+          </div>
+          <div class="os-col-35">
+            <timepicker ng-model="derivative.createdOn" class="os-time-no-wheels" show-meridian="false">
+            </timepicker>
+          </div>
+        </div>
+        <div os-field-error field="derivativeForm.createdOn"></div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-xs-3 control-label" translate="specimens.created_by">Created By</label>
+      <div class="col-xs-6">
+        <os-users name="createdBy" ng-model="derivative.createdBy" default-current-user exclude-contacts
+          placeholder="{{'specimens.created_by' | translate}}" required>
+        </os-users>
+        <div os-field-error field="derivativeForm.createdBy"></div>
+      </div>
+    </div>
 
     <div class="form-group" ng-if="barcodingEnabled && !spmnBarcodesAutoGen">
       <label class="col-xs-3 control-label" translate="specimens.barcode">Barcode</label>
@@ -178,7 +206,7 @@
     </div>
 
     <div class="form-group">
-      <label class="col-xs-3 control-label" translate="specimens.anatomic_site">Anatomic Site</label>
+      <label class="col-xs-3 control-label" translate="specimens.anatomic_site">Anatomic Category</label>
       <div class="col-xs-6">
         <os-pvs name="anatomicSite" ng-model="derivative.anatomicSite" attribute="anatomic-site" 
           show-only-leaf-values="true" required placeholder="{{'specimens.anatomic_site' | translate}}">
@@ -197,33 +225,7 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <label class="col-xs-3 control-label" translate="specimens.created_on">Created On</label>
-      <div class="col-xs-6">
-        <div class="os-date-time clearfix">
-          <div class="os-col-65 os-no-padding input">
-            <os-date-picker name="createdOn" date="derivative.createdOn"
-              placeholder="{{'specimens.created_on' | translate}}" required>
-            </os-date-picker>
-          </div>
-          <div class="os-col-35">
-            <timepicker ng-model="derivative.createdOn" class="os-time-no-wheels" show-meridian="false">
-            </timepicker>
-          </div>
-        </div>
-        <div os-field-error field="derivativeForm.createdOn"></div>
-      </div>
-    </div>
-
-    <div class="form-group">
-      <label class="col-xs-3 control-label" translate="specimens.created_by">Created By</label>
-      <div class="col-xs-6">
-        <os-users name="createdBy" ng-model="derivative.createdBy" default-current-user exclude-contacts
-          placeholder="{{'specimens.created_by' | translate}}" required>
-        </os-users>
-        <div os-field-error field="derivativeForm.createdBy"></div>
-      </div>
-    </div>
+<!--
 
     <div class="form-group">
       <label class="col-xs-3 control-label" translate="specimens.freeze_thaw_cycles">Freeze/Thaw Cycles</label>
@@ -246,6 +248,12 @@
         </div>
       </div>
     </div>
+	-->
+	
+	    <div class="os-entity-extn-form-fields" ng-if="!!extnOpts">
+      <div id='de-form' class='os-extn-form' os-de-form opts="extnOpts" ctrl="deFormCtrl" extended-obj="derivative">
+      </div>
+    </div>
 
     <div class="form-group">
       <label class="col-xs-3 control-label">
@@ -258,9 +266,6 @@
       </div>
     </div>
 
-    <div class="os-entity-extn-form-fields" ng-if="!!extnOpts">
-      <div id='de-form' class='os-extn-form' os-de-form opts="extnOpts" ctrl="deFormCtrl" extended-obj="derivative">
-      </div>
-    </div>
+
   </div>
 </script>
