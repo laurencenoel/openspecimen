@@ -1,4 +1,35 @@
 <div>
+
+
+    <div class="form-group">
+      <label class="col-xs-3 control-label" translate="specimens.created_on">Created On</label>
+      <div class="col-xs-6">
+        <div class="os-date-time clearfix">
+          <div class="col-xs-6 input os-no-padding">
+            <os-date-picker name="createdOn" date="aliquotSpec.createdOn"
+              placeholder="{{'specimens.created_on' | translate}}" required>
+            </os-date-picker>
+          </div>
+          <div class="col-xs-6">
+            <timepicker ng-model="aliquotSpec.createdOn" class="os-time-no-wheels" show-meridian="false">
+            </timepicker>
+          </div>
+        </div>
+        <div os-field-error field="aliquotForm.createdOn"></div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="col-xs-3 control-label" translate="specimens.created_by">Created By</label>
+      <div class="col-xs-6">
+        <os-users name="createdBy" ng-model="aliquotSpec.createdBy" default-current-user exclude-contacts
+          placeholder="{{'specimens.created_by' | translate}}" required>
+        </os-users>
+        <div os-field-error field="aliquotForm.createdBy"></div>
+      </div>
+    </div>
+
+
   <div class="form-group">
     <label class="col-xs-3 control-label" translate="specimens.specimen_type">Specimen Type</label>
     <div class="col-xs-6">
@@ -51,34 +82,9 @@
       </div>
     </div>
 
-    <div class="form-group">
-      <label class="col-xs-3 control-label" translate="specimens.created_on">Created On</label>
-      <div class="col-xs-6">
-        <div class="os-date-time clearfix">
-          <div class="col-xs-6 input os-no-padding">
-            <os-date-picker name="createdOn" date="aliquotSpec.createdOn"
-              placeholder="{{'specimens.created_on' | translate}}" required>
-            </os-date-picker>
-          </div>
-          <div class="col-xs-6">
-            <timepicker ng-model="aliquotSpec.createdOn" class="os-time-no-wheels" show-meridian="false">
-            </timepicker>
-          </div>
-        </div>
-        <div os-field-error field="aliquotForm.createdOn"></div>
-      </div>
-    </div>
 
-    <div class="form-group">
-      <label class="col-xs-3 control-label" translate="specimens.created_by">Created By</label>
-      <div class="col-xs-6">
-        <os-users name="createdBy" ng-model="aliquotSpec.createdBy" default-current-user exclude-contacts
-          placeholder="{{'specimens.created_by' | translate}}" required>
-        </os-users>
-        <div os-field-error field="aliquotForm.createdBy"></div>
-      </div>
-    </div>
 
+<!--
     <div class="form-group">
       <label class="col-xs-3 control-label" translate="specimens.freeze_thaw_cycles">Freeze/Thaw Cycles</label>
       <div class="col-xs-6">
@@ -100,6 +106,7 @@
         </div>
       </div>
     </div>
+	-->
 
     <div class="form-group">
       <label class="col-xs-3 control-label">
@@ -123,7 +130,7 @@
       <div class="checkbox">
         <os-checkbox ng-model="aliquotSpec.closeParent"></os-checkbox>
       </div>
-      <div class="message os-ctrl-padding-top">
+      <div class="message os-ctrl-padding-top" style="color:red">
         <span translate="specimens.close_parent_q">Do you want to close parent specimen?</span>
       </div>
     </div>

@@ -126,7 +126,7 @@
       <strong class="key key-sm" translate="visits.visit_site">Site</strong>
       <span class="value value-md">{{visit.site | osNoValue}}</span>
     </li>
-
+<!--
     <li class="item">
       <strong class="key key-sm" translate="visits.clinical_diagnosis">Clinical Diagnosis</strong>
       <span class="value value-md">{{visit.diagnosisList | osArrayJoin: joinCd | osNoValue}}</span>
@@ -146,6 +146,7 @@
       <strong class="key key-sm" translate="visits.surgical_path_no">Surg Path Number</strong>
       <span class="value value-md">{{visit.surgicalPathologyNumber | osNoValue}}</span>
     </li>
+	-->
 
     <li class="item" ng-if="visit.status == 'Missed Collection' || visit.status == 'Not Collected'">
       <strong class="key key-sm" translate="visits.missed_by">Missed By</strong>

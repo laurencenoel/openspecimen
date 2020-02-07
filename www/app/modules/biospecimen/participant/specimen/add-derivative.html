@@ -58,7 +58,7 @@
         <div class="col-xs-2 os-ctrl-padding-top">
           <span>{{parentSpecimen.type}}</span>
         </div>
-        <label class="col-xs-2 control-label" translate="specimens.anatomic_site">Anatomic Site</label>
+        <label class="col-xs-2 control-label" translate="specimens.anatomic_site">Anatomic Category</label>
         <div class="col-xs-2 os-ctrl-padding-top">
           <span>{{parentSpecimen.anatomicSite}}</span>
         </div>
@@ -81,7 +81,7 @@
           <div class="checkbox">
             <os-checkbox ng-model="derivative.closeParent"></os-checkbox>
           </div>
-          <div class="message os-ctrl-padding-top">
+          <div class="message os-ctrl-padding-top" style="color:red">
             <span translate="specimens.close_parent_q">Do you want to close parent specimen?</span>
           </div>
         </div>

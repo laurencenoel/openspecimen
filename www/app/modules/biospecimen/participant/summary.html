@@ -27,6 +27,8 @@
       <strong class="key key-sm" translate="participant.external_id">External Subject ID</strong>
       <span class="value value-md"> {{cpr.externalSubjectId}} </span>
     </li>
+	
+	<!--
 
     <li class="item">
       <strong class="key key-sm" translate="participant.birth_date">Birth Date:</strong>
@@ -67,6 +69,7 @@
       <strong class="key key-sm" translate="participant.death_date">Death Date:</strong>
       <span class="value value-md"> {{cpr.participant.deathDate | date: global.dateFmt}} </span>
     </li>
+	-->
   </ul>
 
   <div ng-if="!!cpr.participant.extensionDetail">
@@ -74,7 +77,7 @@
     </div>
   </div>
 
-  <div ng-include="'modules/biospecimen/participant/mrn-details.html'"></div>
+ <!-- <div ng-include="'modules/biospecimen/participant/mrn-details.html'"></div> -->
 </script>
 
 <script type="text/ng-template" id="modules/biospecimen/participant/mrn-details.html">

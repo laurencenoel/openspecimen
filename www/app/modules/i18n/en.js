@@ -704,7 +704,7 @@
     "coll_container": "Collection Container",
     "collection_status": "Collection Status",
     "class": "Class",
-    "anatomic_site": "Anatomic Site",
+    "anatomic_site": "Anatomic Category",
     "laterality": "Laterality",
     "initial_qty": "Initial Quantity",
     "available_qty": "Available Quantity",

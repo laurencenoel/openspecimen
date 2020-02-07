@@ -208,12 +208,15 @@
       <thead class="os-table-head">
         <tr class="row">
           <th class="col">&nbsp;</th>
+		  <th class="col" translate="participant.ppid">Participant ID</th>
+		  <!--
           <th class="col" translate="participant.first_name">First Name</th>
           <th class="col" translate="participant.last_name">Last Name</th>
           <th class="col" translate="participant.birth_date">Birth Date</th>
           <th class="col" translate="participant.uid">SSN</th>
           <th class="col" translate="participant.mpi">eMPI</th>
           <th class="col" translate="participant.pmis">Medical Identifiers</th>
+		  -->
           <th class="col" translate="participant.registered_cps">Collection Protocols</th>
         </tr>
       </thead>
@@ -223,6 +226,8 @@
             <input type="radio" name="selectedParticipant" ng-model="match.$$selected" ng-value="true"
               ng-click="selectMatch(match)">
           </td>
+		  <td class="col">{{match.cpr.participant.ppid | osNoValue}}</td>
+		  <!--
           <td class="col">{{match.cpr.participant.firstName | osNoValue}}</td>
           <td class="col">{{match.cpr.participant.lastName | osNoValue}}</td>
           <td class="col"> 
@@ -231,6 +236,7 @@
           <td class="col">{{match.cpr.participant.uid | osNoValue}}</td>
           <td class="col">{{match.cpr.participant.empi | osNoValue}}</td>
           <td class="col">{{match.cpr.participant.pmis | osArrayJoin: pmiText | osNoValue}}</td>
+		  -->
           <td class="col">{{match.cps | osArrayJoin}}</td>
         </tr>
       </tbody>
@@ -325,7 +331,7 @@
     </div>
 
     <div class="form-group" ng-if="cpr.id || !cp.ppidFmt || cp.manualPpidEnabled">
-      <label class="col-xs-3 control-label" translate="participant.ppid">Participant Protocol ID</label>
+      <label class="col-xs-3 control-label" translate="participant.ppid">Participant ID</label>
       <div class="col-xs-6">
         <input type="text" name="ppid" ng-model="cpr.ppid" class="form-control"
           placeholder="{{'participant.ppid' | translate}}" required
@@ -354,7 +360,8 @@
     </div>
 
     <div class="os-divider"></div>
-
+	
+	<!--
     <div class="form-group os-multi-parts-control">
       <label class="col-xs-3 control-label" translate="participant.name">Name</label>
       <div class="col-xs-2">
@@ -505,6 +512,7 @@
         </div>
       </div>
     </div>
+	-->
 
     <div class="os-entity-extn-form-fields" ng-if="!!extnOpts">
       <div id="de-form" class="os-extn-form" os-de-form opts="extnOpts" ctrl="deFormCtrl" extended-obj="cpr.participant">

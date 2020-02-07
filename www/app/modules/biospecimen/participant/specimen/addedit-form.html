@@ -90,6 +90,34 @@
         <div os-field-error field="sform.label"></div>
       </div>
     </div>
+	
+	    <div class="form-group" ng-if="inputSpmn.status == 'Collected'">
+      <label class="col-xs-3 control-label" translate="specimens.created_on">Created On</label>
+      <div class="col-xs-6">
+        <div class="os-date-time clearfix">
+          <div class="os-col-65 input os-no-padding">
+            <os-date-picker name="createdOn" date="inputSpmn.createdOn"
+              placeholder="{{'specimens.created_on' | translate}}" required>
+            </os-date-picker>
+          </div>
+          <div class="os-col-35">
+            <timepicker ng-model="inputSpmn.createdOn" class="os-time-no-wheels" show-meridian="false">
+            </timepicker>
+          </div>
+        </div>
+        <div os-field-error field="sform.createdOn"></div>
+      </div>
+    </div>
+
+    <div class="form-group" ng-if="inputSpmn.lineage != 'New' && inputSpmn.status == 'Collected'">
+      <label class="col-xs-3 control-label" translate="specimens.created_by">Created By</label>
+      <div class="col-xs-6">
+        <os-users name="createdBy" ng-model="inputSpmn.createdBy" default-current-user exclude-contacts
+          placeholder="{{'specimens.created_by' | translate}}" required>
+        </os-users>
+        <div os-field-error field="sform.createdBy"></div>
+      </div>
+    </div>
 
     <div class="form-group" ng-if="opts.barcodingEnabled">
       <label class="col-xs-3 control-label" translate="specimens.barcode">Barcode</label>
@@ -150,34 +178,8 @@
       </div>
     </div>
 
-    <div class="form-group" ng-if="inputSpmn.status == 'Collected'">
-      <label class="col-xs-3 control-label" translate="specimens.created_on">Created On</label>
-      <div class="col-xs-6">
-        <div class="os-date-time clearfix">
-          <div class="os-col-65 input os-no-padding">
-            <os-date-picker name="createdOn" date="inputSpmn.createdOn"
-              placeholder="{{'specimens.created_on' | translate}}" required>
-            </os-date-picker>
-          </div>
-          <div class="os-col-35">
-            <timepicker ng-model="inputSpmn.createdOn" class="os-time-no-wheels" show-meridian="false">
-            </timepicker>
-          </div>
-        </div>
-        <div os-field-error field="sform.createdOn"></div>
-      </div>
-    </div>
 
-    <div class="form-group" ng-if="inputSpmn.lineage != 'New' && inputSpmn.status == 'Collected'">
-      <label class="col-xs-3 control-label" translate="specimens.created_by">Created By</label>
-      <div class="col-xs-6">
-        <os-users name="createdBy" ng-model="inputSpmn.createdBy" default-current-user exclude-contacts
-          placeholder="{{'specimens.created_by' | translate}}" required>
-        </os-users>
-        <div os-field-error field="sform.createdBy"></div>
-      </div>
-    </div>
-
+<!--
     <div class="form-group" ng-if="!inputSpmn.poolSpecimen">
       <label class="col-xs-3 control-label" translate="specimens.concentration">Concentration</label>
       <div class="col-xs-6"> 
@@ -187,14 +189,9 @@
         <div os-field-error field="sform.concentration"></div>
       </div>
     </div>
+-->
 
-    <div class="form-group" ng-if="opts.storeSpmn && inputSpmn.status == 'Collected'">
-      <label class="col-xs-3 control-label" translate="specimens.location">Location</label>
-      <div class="col-xs-6">
-        <os-storage-position entity="inputSpmn" cp-id="opts.cpr.cpId" virtual="spmnCtx.isVirtual"></os-storage-position>
-      </div>
-    </div>
-
+<!--
     <div class="form-group"  
       ng-if="(inputSpmn.lineage != 'Aliquot' && !inputSpmn.poolSpecimen) && biohazards.length > 0">
       <label class="col-xs-3 control-label" translate="specimens.biohazards">Biohazards</label>
@@ -205,6 +202,7 @@
       </div>
     </div>
 
+
     <div class="form-group">
       <label class="col-xs-3 control-label" translate="specimens.freeze_thaw_cycles">Freeze/Thaw Cycles</label>
       <div class="col-xs-6">
@@ -214,6 +212,7 @@
         <div os-field-error field="sform.freezeThawCycles"></div>
       </div>
     </div>
+		-->
 
     <div ng-if="inputSpmn.lineage != 'Aliquot' && !inputSpmn.poolSpecimen">
       <div class="form-group">
@@ -227,7 +226,7 @@
       </div>
 
       <div class="form-group">
-        <label class="col-xs-3 control-label" translate="specimens.anatomic_site">Anatomic Site</label>
+        <label class="col-xs-3 control-label" translate="specimens.anatomic_site">Anatomic Category</label>
         <div class="col-xs-6">
           <os-pvs name="anatomicSite" ng-model="inputSpmn.anatomicSite" attribute="anatomic-site" 
             show-only-leaf-values="true" required placeholder="{{'specimens.anatomic_site' | translate}}">
@@ -246,6 +245,13 @@
         </div>
       </div>
     </div>
+	
+	    <div class="os-entity-extn-form-fields" ng-if="!!extnOpts">
+      <div class="os-section-divider">
+       <!-- <span translate="specimens.custom_fields">Additional Fields</span> -->
+      </div>
+      <div class='os-extn-form' os-de-form opts="extnOpts" ctrl="deFormCtrl" extended-obj="inputSpmn"></div>
+    </div>
 
     <div class="form-group">
       <label class="col-xs-3 control-label">
@@ -255,6 +261,15 @@
         <textarea ng-model="inputSpmn.comments" class="form-control"
           placeholder="{{'specimens.comments' | translate}}" rows="2">
         </textarea>
+      </div>
+    </div>
+	
+	
+	 <div class="os-section-divider"></div>
+	    <div class="form-group" ng-if="opts.storeSpmn && inputSpmn.status == 'Collected'">
+      <label class="col-xs-3 control-label" translate="specimens.location">Location</label>
+      <div class="col-xs-6">
+        <os-storage-position entity="inputSpmn" cp-id="opts.cpr.cpId" virtual="spmnCtx.isVirtual"></os-storage-position>
       </div>
     </div>
 
@@ -349,12 +364,7 @@
       </div>
     </div>
 
-    <div class="os-entity-extn-form-fields" ng-if="!!extnOpts">
-      <div class="os-section-divider">
-        <span translate="specimens.custom_fields">Additional Fields</span>
-      </div>
-      <div class='os-extn-form' os-de-form opts="extnOpts" ctrl="deFormCtrl" extended-obj="inputSpmn"></div>
-    </div>
+
   </div>
 </script>
 
@@ -368,7 +378,7 @@
       <div class="checkbox">
         <os-checkbox ng-model="spmnCtx.createAliquots" ng-click="toggleAliquots()"></os-checkbox>
       </div>
-      <div class="message os-ctrl-padding-top">
+      <div class="message os-ctrl-padding-top" >
         <span translate="specimens.create_aliquots_q">Do you want to create aliquots?</span>
       </div>
     </div>

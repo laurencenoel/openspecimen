@@ -154,6 +154,28 @@
           </ng-switch>
         </ng-switch>
       </li>
+	  
+	     <li class="item" ng-if="!!specimen.parentId">
+        <strong class="key key-sm" translate="specimens.parent_specimen">Parent Specimen</strong>
+        <span class="value value-md">
+          <a ui-sref="specimen-detail.overview(
+            {eventId: visit.eventId, visitId: visit.id, specimenId: specimen.parentId, srId: specimen.reqId})">
+            <span ng-if="!!specimen.parentLabel">{{specimen.parentLabel}}</span>
+            <span ng-if="!specimen.parentLabel" translate="specimens.parent_specimen">Parent Specimen</span>
+          </a>
+        </span>
+      </li>
+	  
+	        <li class="item">
+        <strong class="key key-sm" translate="specimens.created_on">Created On</strong>
+        <span class="value value-md">{{specimen.createdOn | date: global.dateTimeFmt | osNoValue}}</span>
+      </li>
+
+      <li class="item" ng-if="specimen.lineage != 'New'">
+        <strong class="key key-sm" translate="specimens.created_by">Created By</strong>
+        <span class="value value-md">{{specimen.createdBy | osUserDisplayName | osNoValue}}</span>
+      </li>
+
 
       <li class="item" ng-if="barcodingEnabled">
         <strong class="key key-sm" translate="specimens.barcode">Barcode</strong>
@@ -168,15 +190,7 @@
         </span>
       </li>
 
-      <li class="item">
-        <strong class="key key-sm" translate="specimens.anatomic_site">Anatomic Site</strong>
-        <span class="value value-md">{{specimen.anatomicSite | osNoValue}}</span>
-      </li>
 
-      <li class="item">
-        <strong class="key key-sm" translate="specimens.laterality">Laterality</strong>
-        <span class="value value-md">{{specimen.laterality | osNoValue}}</span>
-      </li>
 
       <li class="item">
         <strong class="key key-sm" translate="specimens.initial_qty">Initial Quantity</strong>
@@ -187,23 +201,30 @@
         <strong class="key key-sm" translate="specimens.available_qty">Available Quantity</strong>
         <os-spmn-measure-val value="specimen.availableQty" specimen="specimen"></os-spmn-measure-val>
       </li>
+	  
+	        <li class="item">
+        <strong class="key key-sm" translate="specimens.anatomic_site">Anatomic Category</strong>
+        <span class="value value-md">{{specimen.anatomicSite | osNoValue}}</span>
+      </li>
 
       <li class="item">
+        <strong class="key key-sm" translate="specimens.laterality">Laterality</strong>
+        <span class="value value-md">{{specimen.laterality | osNoValue}}</span>
+      </li>
+	  
+	      <div ng-if="!!specimen.extensionDetail">
+      <div os-extension-overview ext-object="specimen.extensionDetail" show-column="2"></div>
+    </div>
+
+<!--
+      <li class="item" ng-if="specimen.lineage != 'New'">
         <strong class="key key-sm" translate="specimens.concentration">Concentration</strong>
         <os-spmn-measure-val value="specimen.concentration" measure="'concentration'" specimen="specimen">
         </os-spmn-measure-val>
       </li>
+	  -->
 
-      <li class="item" ng-if="!!specimen.parentId">
-        <strong class="key key-sm" translate="specimens.parent_specimen">Parent Specimen</strong>
-        <span class="value value-md">
-          <a ui-sref="specimen-detail.overview(
-            {eventId: visit.eventId, visitId: visit.id, specimenId: specimen.parentId, srId: specimen.reqId})">
-            <span ng-if="!!specimen.parentLabel">{{specimen.parentLabel}}</span>
-            <span ng-if="!specimen.parentLabel" translate="specimens.parent_specimen">Parent Specimen</span>
-          </a>
-        </span>
-      </li>
+   
 
       <li class="item" ng-if="!!specimen.pooledSpecimenId">
         <strong class="key key-sm" translate="specimens.pooled_specimen">Pooled Specimen</strong>
@@ -215,11 +236,12 @@
           </a>
         </span>
       </li>
-
+<!--
       <li class="item">
         <strong class="key key-sm" translate="specimens.pathology">Pathology Status</strong>
         <span class="value value-md">{{specimen.pathology | osNoValue}}</span>
       </li>
+	  -->
 
       <li class="item">
         <strong class="key key-sm" translate="specimens.storage_location">Storage Location</strong>
@@ -234,31 +256,23 @@
           </span>
         </ng-switch>
       </li>
+	  
+	  <!--
 
       <li class="item">
         <strong class="key key-sm" translate="specimens.biohazards">Biohazards</strong>
         <span class="value value-md">{{specimen.biohazards | osArrayJoin | osNoValue}}</span>
       </li>
 
-      <li class="item">
-        <strong class="key key-sm" translate="specimens.created_on">Created On</strong>
-        <span class="value value-md">{{specimen.createdOn | date: global.dateTimeFmt | osNoValue}}</span>
-      </li>
-
-      <li class="item" ng-if="specimen.lineage != 'New'">
-        <strong class="key key-sm" translate="specimens.created_by">Created By</strong>
-        <span class="value value-md">{{specimen.createdBy | osUserDisplayName | osNoValue}}</span>
-      </li>
 
       <li class="item">
         <strong class="key key-sm" translate="specimens.freeze_thaw_cycles">Freeze/Thaw Cycles</strong>
         <span class="value value-md">{{specimen.freezeThawCycles | osNoValue}}</span>
       </li>
     </ul>
+	-->
 
-    <div ng-if="!!specimen.extensionDetail">
-      <div os-extension-overview ext-object="specimen.extensionDetail" show-column="2"></div>
-    </div>
+
 
     <div class="os-section os-line-section" ng-if="!!specimen.comments">
       <strong class="key key-sm">
