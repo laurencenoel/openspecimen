@@ -318,6 +318,10 @@ public class VisitFactoryImpl implements VisitFactory {
 				site = visit.getCpEvent().getDefaultSite();
 			} else if (visit.getRegistration() != null) {
 				CollectionProtocolRegistration cpr = visit.getRegistration();
+				
+				if (cpr.getSite() != null) {
+					site = cpr.getSite();
+				} else {
 				Visit latestVisit = cpr.getLatestVisit();
 				if (latestVisit != null) {
 					site = latestVisit.getSite();
@@ -326,6 +330,7 @@ public class VisitFactoryImpl implements VisitFactory {
 					if (CollectionUtils.isNotEmpty(pmis)) {
 						site = pmis.get(0).getSite();
 					}
+				}
 				}
 			}
 		} else {
