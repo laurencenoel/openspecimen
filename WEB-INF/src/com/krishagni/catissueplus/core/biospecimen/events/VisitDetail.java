@@ -262,9 +262,7 @@ public class VisitDetail extends VisitSummary {
 			detail.setMissedBy(UserSummary.from(visit.getMissedBy()));
 		}
 
-		if (visit.getSite() != null) {
-			detail.setSite(visit.getSite().getName());
-		}
+
 
 		CollectionProtocolRegistration cpr = visit.getRegistration();
 		detail.setCprId(cpr.getId());
@@ -272,6 +270,13 @@ public class VisitDetail extends VisitSummary {
 		detail.setCpId(cpr.getCollectionProtocol().getId());
 		detail.setCpTitle(cpr.getCollectionProtocol().getTitle());
 		detail.setCpShortTitle(cpr.getCollectionProtocol().getShortTitle());
+		
+		
+		if (visit.getSite() != null) {
+			detail.setSite(visit.getSite().getName());
+		} else {
+			detail.setSite(cpr.getSite());
+		}
 		
 		if (!visit.isUnplanned()) {
 			CollectionProtocolEvent cpe = visit.getCpEvent();
