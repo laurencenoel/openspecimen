@@ -212,9 +212,7 @@
         <span class="value value-md">{{specimen.laterality | osNoValue}}</span>
       </li>
 	  
-	      <div ng-if="!!specimen.extensionDetail">
-      <div os-extension-overview ext-object="specimen.extensionDetail" show-column="2"></div>
-    </div>
+
 
 <!--
       <li class="item" ng-if="specimen.lineage != 'New'">
@@ -272,6 +270,10 @@
     </ul>
 	-->
 
+
+	<div ng-if="!!specimen.extensionDetail">
+      <div os-extension-overview ext-object="specimen.extensionDetail" show-column="2"></div>
+    </div>
 
 
     <div class="os-section os-line-section" ng-if="!!specimen.comments">
