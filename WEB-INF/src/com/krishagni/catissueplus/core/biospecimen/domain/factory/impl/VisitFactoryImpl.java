@@ -310,9 +310,7 @@ public class VisitFactoryImpl implements VisitFactory {
 		Site site = null;
 		String visitSite = visitDetail.getSite();
 		if (StringUtils.isBlank(visitSite)) {
-			if (visit.isMissedOrNotCollected()) {
-				return;
-			}
+
 
 			if (visit.getRegistration() != null) {
 				CollectionProtocolRegistration cpr = visit.getRegistration();
@@ -333,6 +331,11 @@ public class VisitFactoryImpl implements VisitFactory {
 			} else if (visit.getCpEvent() != null && visit.getCpEvent().getDefaultSite() != null) {
 				site = visit.getCpEvent().getDefaultSite();
 			}
+			
+			if (visit.isMissedOrNotCollected()) {
+				return;
+			}
+			
 		} else {
 			site = daoFactory.getSiteDao().getSiteByName(visitSite);
 			if (site == null) {
