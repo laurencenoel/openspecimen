@@ -14,6 +14,7 @@
           </span>
         </button>
       </span>
+	  <!--
       <span ng-if="visit.status == 'Complete'" show-if-allowed="specimenResource.updateOpts">
         <button ng-if="visitCtx.spmnReqs.length == 0" class="default"
           ui-sref="specimen-addedit({cpId: cp.id, visitId: visit.id, cprId: cpr.id})">
@@ -40,6 +41,7 @@
           </ul>
         </div>
       </span>
+	  -->
       <button ng-if="!!visit.id && visit.status != 'Missed Collection' && visit.status != 'Not Collected'
         && specimens.length  > 0" show-if-allowed="specimenResource.updateOpts" class="default"
         ng-click="printSpecimenLabels()" title="{{'specimens.tooltip.print' | translate}}">
