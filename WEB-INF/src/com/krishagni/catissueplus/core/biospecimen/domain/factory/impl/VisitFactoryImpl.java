@@ -314,9 +314,7 @@ public class VisitFactoryImpl implements VisitFactory {
 				return;
 			}
 
-			if (visit.getCpEvent() != null && visit.getCpEvent().getDefaultSite() != null) {
-				site = visit.getCpEvent().getDefaultSite();
-			} else if (visit.getRegistration() != null) {
+			if (visit.getRegistration() != null) {
 				CollectionProtocolRegistration cpr = visit.getRegistration();
 				
 				if (cpr.getSite() != null) {
@@ -332,6 +330,8 @@ public class VisitFactoryImpl implements VisitFactory {
 					}
 				}
 				}
+			} else if (visit.getCpEvent() != null && visit.getCpEvent().getDefaultSite() != null) {
+				site = visit.getCpEvent().getDefaultSite();
 			}
 		} else {
 			site = daoFactory.getSiteDao().getSiteByName(visitSite);
