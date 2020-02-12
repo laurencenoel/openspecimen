@@ -15,7 +15,7 @@
       insert into catissue_institution
         (identifier, name, activity_status)
       values
-        (default, 'Biobank Institute', 'Active')
+        (default, 'INSERM', 'Active')
     </sql>
     <sql>
       insert into catissue_user
@@ -37,7 +37,7 @@
       insert into catissue_institution
         (identifier, name, activity_status)
       values
-        (CATISSUE_INSTITUTE_SEQ.nextval, 'Biobank Institute', 'Active')
+        (CATISSUE_INSTITUTE_SEQ.nextval, 'INSERM', 'Active')
     </sql>
     <sql>
       insert into catissue_user
