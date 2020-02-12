@@ -255,6 +255,13 @@
             <column name="VERSION" value="1.1"/>
             <column name="LAST_UPDATED"/>
         </insert>
+		<insert tableName="CATISSUE_CDE">
+            <column name="PUBLIC_ID" value="organ_part"/>
+            <column name="LONG_NAME" value="Organ part"/>
+            <column name="DEFINITION" value="Organ part"/>
+            <column name="VERSION" value="1.1"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
     </changeSet>
     <changeSet dbms="oracle" author="OpenSpecimen" id="1427203096379-17">
         <insert tableName="CATISSUE_ADDRESS">
