@@ -262,6 +262,14 @@
             <column name="VERSION" value="1"/>
             <column name="LAST_UPDATED"/>
         </insert>
+		<insert tableName="CATISSUE_CDE">
+            <column name="PUBLIC_ID" value="dev_anatomy"/>
+            <column name="LONG_NAME" value="Developmental anatomy"/>
+            <column name="DEFINITION" value="Developmental anatomy"/>
+            <column name="VERSION" value="1"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+
 
     </changeSet>
     <changeSet dbms="oracle" author="OpenSpecimen" id="1427203096379-17">

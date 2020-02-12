@@ -222,6 +222,13 @@
             <column name="VERSION" value="1.0"/>
             <column name="LAST_UPDATED"/>
         </insert>
+		<insert tableName="catissue_cde">
+            <column name="PUBLIC_ID" value="dev_anatomy"/>
+            <column name="LONG_NAME" value="Developmental anatomy"/>
+            <column name="DEFINITION" value="Developmental anatomy"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
 
     </changeSet>
     <changeSet dbms="mysql" author="home (generated)" id="1427184466112-5">
