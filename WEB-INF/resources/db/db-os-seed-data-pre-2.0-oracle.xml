@@ -259,7 +259,14 @@
             <column name="PUBLIC_ID" value="organ_part"/>
             <column name="LONG_NAME" value="Organ part"/>
             <column name="DEFINITION" value="Organ part"/>
-            <column name="VERSION" value="1.1"/>
+            <column name="VERSION" value="1"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		<insert tableName="CATISSUE_CDE">
+            <column name="PUBLIC_ID" value="dev_anatomy"/>
+            <column name="LONG_NAME" value="Development anatomical structure"/>
+            <column name="DEFINITION" value="Development anatomical structure"/>
+            <column name="VERSION" value="1"/>
             <column name="LAST_UPDATED"/>
         </insert>
     </changeSet>
