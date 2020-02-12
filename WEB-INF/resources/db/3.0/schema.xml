@@ -17,6 +17,8 @@
       constraintName="MRN_SITE_UNIQUE"/>
   </changeSet>
   
+  <!-- how to add values -->
+  <!--
   <changeSet author="nmarwaha" id="Added PMBC specimen type under class Cell">
     <preConditions onFail="MARK_RAN">
       <sqlCheck expectedResult="0">
@@ -36,6 +38,7 @@
         (getNextPvId(),'','',getPvParentId('2003991', 'Cell'),'PBMC',null,null)
     </sql>
   </changeSet>
+  -->
   
   <changeSet author="vgaikwad" id="Specimen label print settings at CP level">
     <createTable tableName="OS_CP_SPMN_LBL_PRINT_SETTINGS">
