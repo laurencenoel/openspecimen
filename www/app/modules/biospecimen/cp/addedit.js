@@ -79,9 +79,10 @@ angular.module('os.biospecimen.cp.addedit', ['os.biospecimen.models', 'os.admini
         if ($scope.cp.sopDocumentUrl) {
           cp.sopDocumentName = undefined; 
         }
-*/
+
         saveCp(cp);
-      }
+      }*/
+
     };
 
     $scope.onRepositorySelect = function(repositoryName) {
