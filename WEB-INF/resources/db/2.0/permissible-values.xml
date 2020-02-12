@@ -360,7 +360,7 @@
     </loadUpdateData>
   </changeSet>
   
-      <changeSet author="vpawar" id="Developmental anatomy PVs">
+  <changeSet author="vpawar" id="Developmental anatomy PVs">
     <preConditions onFail="MARK_RAN">
       <sqlCheck expectedResult="0">
         select 
@@ -372,6 +372,22 @@
       </sqlCheck>
     </preConditions>
     <loadUpdateData file="db/2.0/permissible-values/dev-anatomy.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+  <changeSet author="vpawar" id="Carnegie stage PVs">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'carnegie'
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/carnegie.csv" tableName="catissue_permissible_value" primaryKey="identifier">
       <column name="identifier" type="COMPUTED"/>
     </loadUpdateData>
   </changeSet>
@@ -422,6 +438,42 @@
       </sqlCheck>
     </preConditions>
     <loadUpdateData file="db/2.0/permissible-values/specimen-class-and-type.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+      <column name="parent_identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+  
+  
+  <changeSet author="vpawar" id="Protocol class PVs">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select
+          case when (count(*) > 0) then 1 else 0 end
+        from
+          catissue_permissible_value
+        where
+          public_id = 'protocol_type'
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/protocol-class.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+  <changeSet author="vpawar" id="Protocol type PVs">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'protocol_type' and
+          parent_identifier is not null
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/protocol-class-and-type.csv" tableName="catissue_permissible_value" primaryKey="identifier">
       <column name="identifier" type="COMPUTED"/>
       <column name="parent_identifier" type="COMPUTED"/>
     </loadUpdateData>

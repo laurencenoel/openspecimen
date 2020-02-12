@@ -229,6 +229,20 @@
             <column name="VERSION" value="1.0"/>
             <column name="LAST_UPDATED"/>
         </insert>
+		<insert tableName="catissue_cde">
+            <column name="PUBLIC_ID" value="carnegie"/>
+            <column name="LONG_NAME" value="Carnegie stage"/>
+            <column name="DEFINITION" value="Carnegie stage"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		<insert tableName="catissue_cde">
+            <column name="PUBLIC_ID" value="protocol_type"/>
+            <column name="LONG_NAME" value="Protocol"/>
+            <column name="DEFINITION" value="Protocol Class"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
 
     </changeSet>
     <changeSet dbms="mysql" author="home (generated)" id="1427184466112-5">
