@@ -222,6 +222,7 @@
             <column name="VERSION" value="1.0"/>
             <column name="LAST_UPDATED"/>
         </insert>
+
     </changeSet>
     <changeSet dbms="mysql" author="home (generated)" id="1427184466112-5">
         <insert tableName="catissue_query_folders">
