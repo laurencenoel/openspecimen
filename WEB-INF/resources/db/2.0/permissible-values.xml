@@ -344,6 +344,24 @@
     </loadUpdateData>
   </changeSet>
   
+    <changeSet author="vpawar" id="Organ part PVs">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'Organ_Part_PID' or public_id = 'organ_part'
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/organ-part.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+  
+  
   <changeSet author="vpawar" id="Vital status PVs">
     <preConditions onFail="MARK_RAN">
       <sqlCheck expectedResult="0">
