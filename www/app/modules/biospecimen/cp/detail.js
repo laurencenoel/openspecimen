@@ -8,10 +8,10 @@ angular.module('os.biospecimen.cp.detail', ['os.biospecimen.models'])
       //
       // SOP document names are of form: <cp id>_<actual filename>
       //
-	  /*
+	  
       if (!!cp.sopDocumentName) {
         cp.$$sopDocDispName = cp.sopDocumentName.substring(cp.sopDocumentName.indexOf("_") + 1);
-      } */
+      } 
 
       $scope.cp = cp;
       $scope.cp.repositoryNames = cp.getRepositoryNames();
