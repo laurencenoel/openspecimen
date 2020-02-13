@@ -1,0 +1,4 @@
+"IDENTIFIER","CONCEPT_CODE","DEFINITION","value","PUBLIC_ID"
+"getNextPvId()","","","10x sequencing","sequencing_procedure"
+"getNextPvId()","","","3 DGE sequencing","sequencing_procedure"
+"getNextPvId()","","","Single nucleus sequencing","sequencing_procedure"

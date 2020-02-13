@@ -1,0 +1,4 @@
+"IDENTIFIER","CONCEPT_CODE","DEFINITION","value","PUBLIC_ID"
+"getNextPvId()","","","Enzymatic dissociation","dissociation_procedure"
+"getNextPvId()","","","Mechanical dissociation","dissociation_procedure"
+"getNextPvId()","","","Fluidigm C1-based dissociation","dissociation_procedure"

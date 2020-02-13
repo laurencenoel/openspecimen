@@ -283,6 +283,27 @@
             <column name="VERSION" value="1.0"/>
             <column name="LAST_UPDATED"/>
         </insert>
+		<insert tableName="CATISSUE_CDE">
+            <column name="PUBLIC_ID" value="dissociation_procedure"/>
+            <column name="LONG_NAME" value="Dissociation procedure"/>
+            <column name="DEFINITION" value="Dissociation procedure"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		<insert tableName="CATISSUE_CDE">
+            <column name="PUBLIC_ID" value="sequencing_procedure"/>
+            <column name="LONG_NAME" value="Sequencing procedure"/>
+            <column name="DEFINITION" value="Sequencing procedure"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		<insert tableName="CATISSUE_CDE">
+            <column name="PUBLIC_ID" value="library_procedure"/>
+            <column name="LONG_NAME" value="Libray procedure"/>
+            <column name="DEFINITION" value="Library procedure"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
 
 
     </changeSet>

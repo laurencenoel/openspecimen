@@ -461,6 +461,56 @@
     </loadUpdateData>
   </changeSet>
   
+    <changeSet author="lnoel" id="Dissociation procedure PVs">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'dissociation_procedure'
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/dissociation-procedure.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+      <changeSet author="lnoel" id="Sequencing procedure PVs">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'sequencing_procedure'
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/sequencing-procedure.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+       <changeSet author="lnoel" id="Library procedure PVs">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'library_procedure'
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/library-procedure.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+  
+  <!--
   <changeSet author="vpawar" id="Protocol type PVs">
     <preConditions onFail="MARK_RAN">
       <sqlCheck expectedResult="0">
@@ -478,6 +528,7 @@
       <column name="parent_identifier" type="COMPUTED"/>
     </loadUpdateData>
   </changeSet>
+  -->
 
   <changeSet author="vpawar" id="Missed visit reason PV attribute">
     <preConditions onFail="MARK_RAN">
