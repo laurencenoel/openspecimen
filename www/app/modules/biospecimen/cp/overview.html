@@ -134,6 +134,7 @@
           <span class="value value-md">{{cp.anticipatedParticipantsCount | osNoValue}}</span>
         </li>
 
+<!--
         <li class="item">
           <strong class="key key-sm" translate="cp.sop_document">SOP Document</strong>
           <span class="value value-md" ng-switch on="!cp.sopDocumentUrl && !cp.sopDocumentName">
@@ -170,7 +171,10 @@
             <span ng-switch-default translate="common.not_specified">Not Specified</span>
           </span>
         </li>
+			  -->
       </ul>
+	  
+
 
       <div ng-if="!!cp.extensionDetail">
         <div os-extension-overview ext-object="cp.extensionDetail" show-column="2"></div>
