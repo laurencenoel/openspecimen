@@ -263,13 +263,6 @@
             <column name="LAST_UPDATED"/>
         </insert>
 		<insert tableName="CATISSUE_CDE">
-            <column name="PUBLIC_ID" value="dev_anatomy"/>
-            <column name="LONG_NAME" value="Developmental anatomy"/>
-            <column name="DEFINITION" value="Developmental anatomy"/>
-            <column name="VERSION" value="1"/>
-            <column name="LAST_UPDATED"/>
-        </insert>
-		<insert tableName="CATISSUE_CDE">
             <column name="PUBLIC_ID" value="carnegie"/>
             <column name="LONG_NAME" value="Carnegie stage"/>
             <column name="DEFINITION" value="Carnegie stage"/>
