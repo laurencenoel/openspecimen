@@ -244,7 +244,7 @@
             <column name="LAST_UPDATED"/>
         </insert>
 		<insert tableName="catissue_cde">
-            <column name="PUBLIC_ID" value="library_procedure"/>
+            <column name="PUBLIC_ID" value="libconstr_procedure"/>
             <column name="LONG_NAME" value="Libray procedure"/>
             <column name="DEFINITION" value="Library procedure"/>
             <column name="VERSION" value="1.0"/>

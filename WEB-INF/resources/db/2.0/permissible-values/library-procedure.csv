@@ -1,6 +1,3 @@
 "IDENTIFIER","CONCEPT_CODE","DEFINITION","value","PUBLIC_ID"
-"getNextPvId()","","","DNA library construction","library_procedure"
-"getNextPvId()","","","Fluidigm C1-based library preparation","library_procedure"
-"getNextPvId()","","","Smar-Seq","libray_procedure"
-"getNextPvId()","","","Smar-Seq2","libray_procedure"
-"getNextPvId()","","","Single cell library construction","library_procedure"
+"getNextPvId()","","","DNA library construction","libconstr_procedure"
+"getNextPvId()","","","Single cell library construction","libconstr_procedure"
