@@ -60,21 +60,10 @@
                     }
                 },
                 {
-                    "expr": "concat_ws(\" \", Participant.firstName, Participant.lastName)",
-                    "caption": "Name"
-                },
-                {
-                    "expr": "Participant.empi",
-                    "caption": "Master Patient Index"
-                },
-                {
                     "expr": "Participant.regDate",
                     "caption": "Registration Date"
-                },
-                {
-                    "expr": "concat(years_between(current_date(), Participant.dateOfBirth), \" yrs\")",
-                    "caption": "Age"
                 }
+  
             ],
             "criteria": "Participant.id exists",
             "orderBy": [
@@ -89,32 +78,10 @@
                     "caption": "Participant Protocol ID",
                     "searchType": "contains"
                 },
-                {
-                    "expr": "concat_ws(\" \", Participant.firstName, Participant.lastName)",
-                    "caption": "Name",
-                    "metainfo": {
-                        "phi": "true"
-                    }
-                },
-                {
-                    "expr": "Participant.empi",
-                    "caption": "Master Patient Index",
-                    "searchType": "contains",
-                    "metainfo": {
-                        "phi": "true"
-                    }
-                },
+    
                 {
                     "expr": "Participant.regDate",
                     "caption": "Registration Date"
-                },
-                {
-                    "expr": "years_between(current_date(), Participant.dateOfBirth)",
-                    "caption": "Age",
-                    "temporal": "true",
-                    "metainfo": {
-                        "phi": "true"
-                    }
                 }
             ]
         }
@@ -140,13 +107,9 @@
                 },
                 {
                     "expr": "Specimen.tissueSite",
-                    "caption": "Anatomic Site"
+                    "caption": "Anatomic Category"
                 },
-                {
-                    "expr": "Specimen.pathologicalStatus",
-                    "caption": "Pathology Status"
-                },
-                {
+                 {
                     "expr": "Specimen.availableQty",
                     "caption": "Quantity",
                     "metainfo": {
@@ -188,10 +151,7 @@
                     "expr": "Specimen.tissueSite",
                     "caption": "Anatomic Site"
                 },
-                {
-                    "expr": "Specimen.pathologicalStatus",
-                    "caption": "Pathology Status"
-                },
+ 
                 {
                     "expr": "Specimen.availableQty",
                     "caption": "Quantity"
