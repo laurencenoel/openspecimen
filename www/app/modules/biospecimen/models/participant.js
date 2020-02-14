@@ -32,7 +32,7 @@ angular.module('os.biospecimen.models.participant', ['os.common.models'])
       'participants',
       function(p) {
         p.pmis = p.pmis || [];
-        deserBirthDate(p);
+        //deserBirthDate(p);
       }
     );
  
@@ -76,18 +76,31 @@ angular.module('os.biospecimen.models.participant', ['os.common.models'])
       return this.pmis.map(function(pmi) { return pmi.siteName; });
     };
 
-    Participant.prototype.isMatchingInfoPresent = function() {
+    /*Participant.prototype.isMatchingInfoPresent = function() {
       return (this.lastName && this.birthDate) ||
              this.empi ||
              this.uid ||
              this.getPmis().length > 0;
+    };*/
+
+	Participant.prototype.isMatchingInfoPresent = function() {
+      return this.uid ||
+             this.getPmis().length > 0;
     };
 
+/*
     Participant.prototype.getMatchingCriteria = function() {
       return {
         lastName: this.lastName,
         birthDate: (this.birthDate instanceof Date) ? getDateStr(this.birthDate) : this.birthDate,
         empi: this.empi,
+        uid : this.uid,
+        pmis: this.getPmis()
+      };
+    };*/
+	
+	Participant.prototype.getMatchingCriteria = function() {
+      return {
         uid : this.uid,
         pmis: this.getPmis()
       };
@@ -115,7 +128,7 @@ angular.module('os.biospecimen.models.participant', ['os.common.models'])
       var pmis = this.getPmis();
       this.pmis = pmis.length == 0 ? [] : pmis;
 
-      serBirthDate(this);
+      //serBirthDate(this);
       return this;
     };
 
