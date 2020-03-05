@@ -22,7 +22,7 @@
 
     "cp_desc": "Create, update SOP of visits and specimens",
     "rde_desc": "Rapidly capture patients, visits and specimens data",
-    "dp_desc": "Create, update procedures for distributing specimens",
+    "dp_desc": "Create, update procedures for distributing specimens to laboratories that are not part of Hudeca",
     "institutes_desc": "Update information about institutions",
     "users_desc": "Add, rename and manage users",
     "roles_desc": "Create, update user access controls",
@@ -33,7 +33,7 @@
     "forms_desc": "Create and manage custom forms",
     "settings_desc": "Manage application configuration settings",
     "distribution_orders_desc": "Create, execute request orders for distributing specimens",
-    "shipping_and_tracking_desc": "Create, ship, track and receive specimen shipments",
+    "shipping_and_tracking_desc": "Create, ship, track and receive specimen shipments (for Hudeca members)",
     "jobs_desc": "Create, schedule, execute jobs",
     "training_desc": "User manual and training videos portal",
     "consent_statements_desc": "Manage coded consent statements"
@@ -1112,9 +1112,9 @@
   },
   
   "dp": {
-    "list": "Distribution Protocols",
-    "create_dp_title": "Create Distribution Protocol",
-    "update_dp_title": "Update Distribution Protocol",
+    "list": "Distribution protocols (outside of Hudeca)",
+    "create_dp_title": "Create Distribution Protocols",
+    "update_dp_title": "Update Distribution Protocols",
     "title": "Title",
     "short_title": "Short Title",
     "pi": "Principal Investigator",
@@ -1135,8 +1135,8 @@
     "disable_email_notifs": "Disable e-mail notifications. No e-mails will be sent when orders are processed.",
     "closed": "Closed",
     "confirm_close_title": "Closing {{shortTitle}} confirmation",
-    "confirm_close": "Are you sure you want to close the distribution protocol {{shortTitle}} ?",
-    "delete_dps":  "Are you sure you want to delete selected distribution protocols?",
+    "confirm_close": "Are you sure you want to close the distribution form {{shortTitle}} ?",
+    "delete_dps":  "Are you sure you want to delete selected distribution form?",
     "dps_deleted": "Distribution protocols deleted successfully",
     "add_requirement": "Add Specimen Requirement",
     "dist_spmns_count": "Distributed Specimens",
