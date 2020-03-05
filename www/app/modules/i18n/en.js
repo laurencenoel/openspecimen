@@ -1293,7 +1293,7 @@
        "add_role": "Add Role...",
        "update_role": "Update Role",
        "site": "Site",
-       "cp": "Collection Protocol",
+       "cp": "Collection",
        "role": "Role",
        "no_roles": "There are no roles to show. Add a new role by clicking Add Role...",
        "all": "All Current and Future"
@@ -1327,7 +1327,7 @@
       "approve_users": "Click to approve selected users' signup request",
       "email_address": "Email Address",
       "institute_name": "Institute",
-      "cp_count": "Collection Protocol(s)",
+      "cp_count": "Collection(s)",
       "last_login": "Last logged date",
       "user_since": "User since (years)",
       "search": "Click to search Users",
@@ -1427,7 +1427,7 @@
     "horizontal_labeling_scheme": "Column Labeling Scheme",
     "vertical_labeling_scheme": "Row Labeling Scheme",
     "temperature": "Temperature (Celsius)",
-    "collection_protocol": "Collection Protocols",
+    "collection_protocol": "Collection(s)",
     "specimen_types": "Specimen Types",
     "dps": "Distribution Protocols",
     "position": "Position",
@@ -1677,7 +1677,7 @@
     "unlock": "Unlock",
 
     "resources" : {
-      "CollectionProtocol": "Collection Protocols",
+      "CollectionProtocol": "Collection(s)",
       "Order": "Orders",
       "ParticipantPhi": "Participants (PHI)",
       "ParticipantDeid": "Participants (DeId)",
@@ -1715,11 +1715,11 @@
     "na": "Not Applicable",
     "multiple_records": "Multiple Records",
     "single_record": "Single Record",
-    "collection_protocol": "Collection Protocol",
+    "collection_protocol": "Collection",
     "level": "Level",
     "multiple_records_allowed": "Multiple records allowed",
-    "all_cps": "All Present and Future Collection Protocols",
-    "select_cps": "Select One or More Collection Protocols",
+    "all_cps": "All Present and Future Collection(s)",
+    "select_cps": "Select One or More Collection(s)",
     "select_level": "Select Level",
     "attach_form": "Attach Form",
     "attached": "Form successfully attached!",
@@ -1742,7 +1742,7 @@
       "delete": "Click to delete Form",
       "delete_forms": "Click to delete selected forms",
       "search": "Click to search Form",
-      "attach_form_to_cp": "Click to attach form to a Collection Protocol"
+      "attach_form_to_cp": "Click to attach form to a Collection"
     },
 
     "filter": {
@@ -1834,9 +1834,9 @@
     "import_query": "Import Query",
     "select_query_def_file": "Select Query File",
     "new_query": "New Query",
-    "select_cp": "Select a Collection Protocol",
-    "invalid_cp": "Invalid Collection Protocol: {{cpId}}",
-    "invalid_cp_group": "Invalid Collection Protocol Group: {{cpGroupId}}",
+    "select_cp": "Select a Collection",
+    "invalid_cp": "Invalid Collection: {{cpId}}",
+    "invalid_cp_group": "Invalid Collection Group: {{cpGroupId}}",
     "add_filter": "Add Filter",
     "edit_filter": "Edit Filter",
     "search_field": "Search Field",
@@ -2004,7 +2004,7 @@
     },
 
     "catalogs": "Catalogs",
-    "search_cp": "Search Collection Protocol",
+    "search_cp": "Search Collection",
     "no_catalog": "No catalog configured for {{shortTitle}}",
     "search_filter_value": "Search Filter Value",
     "multiple_filter_values": "Enter filter values separated by a comma, tab or newline...",
@@ -2012,8 +2012,8 @@
   },
 
   "entities": {
-    "collection_protocol": "Collection Protocol",
-    "distribution_protocol": "Distribution Protocol",
+    "collection_protocol": "Collection",
+    "distribution_protocol": "Distribution",
     "user": "User",
     "site": "Site",
     "institute": "Institute",
@@ -2187,7 +2187,7 @@
     "more_specimens_limit_reached": "One or more specimens in cart could not be displayed because only 1000 specimens can be displayed at a time",
     "no_specimens": "There are no specimens to show in selected cart",
     "description": "Description",
-    "cp": "Collection Protocol",
+    "cp": "Collection",
     "ppid": "PPID",
     "label": "Label",
     "type": "Type",
@@ -2326,7 +2326,7 @@
 
     "spec": {
       "label": "Label",
-      "cp": "Collection Protocol",
+      "cp": "Collection",
       "desc": "Description",
       "available_qty": "Available",
       "quantity": "Quantity",
@@ -2429,7 +2429,7 @@
 
     "spec": {
       "label": "Label",
-      "cp": "Collection Protocol",
+      "cp": "Collection",
       "desc": "Description",
       "quantity": "Quantity",
       "location": "Location",
