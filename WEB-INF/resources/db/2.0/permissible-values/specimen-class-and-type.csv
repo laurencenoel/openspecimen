@@ -1,16 +1,20 @@
 IDENTIFIER,CONCEPT_CODE,DEFINITION,PARENT_IDENTIFIER,value
 getNextPvId(),,,"getPvParentId('2003991', 'Molecular')","RNA, poly-A enriched"
 getNextPvId(),,,"getPvParentId('2003991', 'Molecular')","RNA, nuclear"
-getNextPvId(),,,"getPvParentId('2003991', 'Molecular')",Not Specified
+getNextPvId(),,,"getPvParentId('2003991', 'Molecular')","Not Specified"
 getNextPvId(),,,"getPvParentId('2003991', 'Molecular')",protein
 getNextPvId(),,,"getPvParentId('2003991', 'Molecular')",cDNA
 getNextPvId(),,,"getPvParentId('2003991', 'Molecular')",RNA
 getNextPvId(),,,"getPvParentId('2003991', 'Molecular')",DNA
 getNextPvId(),,,"getPvParentId('2003991', 'Molecular')","RNA, cytoplasmic"
-getNextPvId(),,,"getPvParentId('2003991', 'Molecular')",Total Nucleic Acid
-getNextPvId(),,,"getPvParentId('2003991', 'Molecular')",Whole Genome Amplified DNA
+getNextPvId(),,,"getPvParentId('2003991', 'Molecular')","Total Nucleic Acid"
+getNextPvId(),,,"getPvParentId('2003991', 'Molecular')","Whole Genome Amplified DNA"
 getNextPvId(),,,"getPvParentId('2003991', 'Molecular')",ctDNA
 getNextPvId(),,,"getPvParentId('2003991', 'Cell')",Cell
+getNextPvId(),,,"getPvParentId('2003991', 'Cell')","Cell pellet"
+getNextPvId(),,,"getPvParentId('2003991', 'Cell')","Cell block"
 getNextPvId(),,,"getPvParentId('2003991', 'Tissue')",Tissue
+getNextPvId(),,,"getPvParentId('2003991', 'Tissue')","Tissue slide"
+getNextPvId(),,,"getPvParentId('2003991', 'Tissue')","Tissue block"
 getNextPvId(),,,"getPvParentId('2003991', 'Organism or organs')",Embryo
 getNextPvId(),,,"getPvParentId('2003991', 'Organism or organs')","Organ(s)"
