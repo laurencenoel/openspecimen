@@ -2,20 +2,20 @@
   "menu": {
     "navigate_to": "Navigate To",
     "home": "Home",
-    "collection_protocols": "Collection Protocols",
+    "collection_protocols": "Collections",
     "rde": "Specimen Collection",
     "settings": "Settings",
     "users": "Users",
     "institutes": "Institutes",
     "sites": "Sites",
-    "distribution_protocols": "Distribution Protocols",
+    "distribution_protocols": "Distribution (outside Hudeca)",
     "roles": "Roles",
-    "queries": "Queries",
+    "queries": "Saved searches",
     "containers": "Containers",
     "forms": "Forms",
     "specimen_lists": "Carts",
     "distribution_orders": "Orders",
-    "shipping_and_tracking": "Shipments",
+    "shipping_and_tracking": "Shipments (within Hudeca)",
     "jobs": "Jobs",
     "training": "Training",
     "consent_statements": "Consents",
@@ -1795,7 +1795,7 @@
   },
 
   "queries": {
-    "list": "Queries",
+    "list": "Saved searches",
     "title": "Title",
     "created_by": "Created By",
     "last_updated": "Last Updated",
@@ -2379,7 +2379,7 @@
   },
 
   "shipments": {
-    "list": "Shipments",
+    "list": "Shipments (within Hudeca)",
     "create_shipment": "Create Shipment",
     "name": "Name",
     "request": "Request",
