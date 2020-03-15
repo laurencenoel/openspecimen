@@ -19,7 +19,6 @@
     "jobs": "Jobs",
     "training": "Training",
     "consent_statements": "Consents",
-
     "cp_desc": "Create, update SOP of visits and specimens",
     "rde_desc": "Rapidly capture patients, visits and specimens data",
     "dp_desc": "Create, update procedures for distributing specimens to laboratories that are not part of Hudeca",
