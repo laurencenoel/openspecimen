@@ -17,4 +17,5 @@ getNextPvId(),,,"getPvParentId('2003991', 'Tissue')",Tissue
 getNextPvId(),,,"getPvParentId('2003991', 'Tissue')","Tissue slide"
 getNextPvId(),,,"getPvParentId('2003991', 'Tissue')","Tissue block"
 getNextPvId(),,,"getPvParentId('2003991', 'Organism or organs')",Embryo
+getNextPvId(),,,"getPvParentId('2003991', 'Organism or organs')","Embryo straw"
 getNextPvId(),,,"getPvParentId('2003991', 'Organism or organs')","Organ(s)"
