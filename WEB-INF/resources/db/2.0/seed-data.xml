@@ -156,6 +156,14 @@
         (identifier, specimen_class, specimen_type, unit, html_display_code, activity_status) 
       values
         (default, 'Tissue', null, 'gm', null, 'Active');
+		
+		
+		insert into os_specimen_qty_units
+        (identifier, specimen_class, specimen_type, unit, html_display_code, activity_status) 
+      values
+        (default, 'Organism or organs', 'Embryo straw', 'embryos', 'Embryos', 'Active');		
+	
+		
     </sql>
   </changeSet>
 
