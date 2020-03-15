@@ -107,5 +107,25 @@
     <sql>call assign_to_role('Consent Collector', 'ParticipantPhi', 'Read,Create,Update,Delete,Export Import');</sql>
     <sql>call assign_to_role('Consent Collector', 'Consent', 'Read,Create,Update,Delete,Export Import');</sql>
   </changeSet>
+  
+  
+<changeSet author="vpawar" id="Infertility disorders" dbms="mysql">
+
+		<insert tableName="catissue_cde">
+            <column name="PUBLIC_ID" value="m_infertility_disorder"/>
+            <column name="LONG_NAME" value="Male infertility disorder"/>
+            <column name="DEFINITION" value="Male infertility disorder"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		<insert tableName="catissue_cde">
+            <column name="PUBLIC_ID" value="f_infertility_disorder"/>
+            <column name="LONG_NAME" value="Female infertility disorder"/>
+            <column name="DEFINITION" value="Female infertility disorder"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+
+  </changeSet>
 
 </databaseChangeLog>

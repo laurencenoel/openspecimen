@@ -494,37 +494,7 @@
     </loadUpdateData>
   </changeSet>
   
-  <changeSet author="vpawar" id="F infertility disorder PVs">
-    <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">
-        select 
-          case when (count(*) > 0) then 1 else 0 end 
-        from 
-          catissue_permissible_value
-        where
-          public_id = 'f_infertility_disorder'
-      </sqlCheck>
-    </preConditions>
-    <loadUpdateData file="db/2.0/permissible-values/f-infertility-disorder.csv" tableName="catissue_permissible_value" primaryKey="identifier">
-      <column name="identifier" type="COMPUTED"/>
-    </loadUpdateData>
-  </changeSet>
-  
-   <changeSet author="vpawar" id="M infertility disorder PVs">
-    <preConditions onFail="MARK_RAN">
-      <sqlCheck expectedResult="0">
-        select 
-          case when (count(*) > 0) then 1 else 0 end 
-        from 
-          catissue_permissible_value
-        where
-          public_id = 'm_infertility_disorder'
-      </sqlCheck>
-    </preConditions>
-    <loadUpdateData file="db/2.0/permissible-values/m-infertility-disorder.csv" tableName="catissue_permissible_value" primaryKey="identifier">
-      <column name="identifier" type="COMPUTED"/>
-    </loadUpdateData>
-  </changeSet>
+
   
   <!--
   <changeSet author="vpawar" id="Protocol type PVs">
