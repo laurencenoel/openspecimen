@@ -223,13 +223,6 @@
             <column name="LAST_UPDATED"/>
         </insert>
 		<insert tableName="catissue_cde">
-            <column name="PUBLIC_ID" value="dev_anatomy"/>
-            <column name="LONG_NAME" value="Developmental anatomy"/>
-            <column name="DEFINITION" value="Developmental anatomy"/>
-            <column name="VERSION" value="1.0"/>
-            <column name="LAST_UPDATED"/>
-        </insert>
-		<insert tableName="catissue_cde">
             <column name="PUBLIC_ID" value="dissociation_procedure"/>
             <column name="LONG_NAME" value="Dissociation procedure"/>
             <column name="DEFINITION" value="Dissociation procedure"/>
@@ -264,6 +257,21 @@
             <column name="VERSION" value="1.0"/>
             <column name="LAST_UPDATED"/>
         </insert>
+		<insert tableName="catissue_cde">
+            <column name="PUBLIC_ID" value="m_infertility_disorder"/>
+            <column name="LONG_NAME" value="Male infertility disorder"/>
+            <column name="DEFINITION" value="Male infertility disorder"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		<insert tableName="catissue_cde">
+            <column name="PUBLIC_ID" value="f_infertility_disorder"/>
+            <column name="LONG_NAME" value="Female infertility disorder"/>
+            <column name="DEFINITION" value="Female infertility disorder"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+
 
     </changeSet>
     <changeSet dbms="mysql" author="home (generated)" id="1427184466112-5">
