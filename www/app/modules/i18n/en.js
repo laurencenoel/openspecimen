@@ -184,12 +184,12 @@
    },
 
   "cp": {
-    "self": "Collection Protocol",
-    "list": "Collection Protocols",
-    "create_cp_title": "Create Collection Protocol",
-    "import_cp_title": "Import Collection Protocol",
+    "self": "Collection",
+    "list": "Collections",
+    "create_cp_title": "Create Collection",
+    "import_cp_title": "Import Collection",
 
-    "cp_def_file": "Collection Protocol Definition File",
+    "cp_def_file": "Collection Definition File",
   
     "repositories": "Sites",
     "site": "Site", 
@@ -251,8 +251,8 @@
     "cps_delete_pending": "Collection protocols deletion taking longer time than anticipated. You'll receive emails when it gets completed",
     "delete_consent_tier": "{{entityType}} {{entityName}} of {{entity.cpShortTitle}} will be deleted forever. Are you sure you want to proceed?",
 
-    "loading_list": "Loading collection protocols, please wait for a moment...",
-    "empty_list": "No collection protocols to show!",
+    "loading_list": "Loading collections, please wait for a moment...",
+    "empty_list": "No collections to show!",
 
     "consents_waived": "Consent waived?",
     "consents_waived_updated": "Participant consent {{waived ? 'waived' : 'enabled'}} successfully.",
@@ -421,15 +421,15 @@
   },
 
   "cp_groups": {
-    "list": "Collection Protocol Groups",
+    "list": "Collection Groups",
     "name": "Name",
-    "cp": "Collection Protocol",
-    "cps": "Collection Protocols",
+    "cp": "Collection",
+    "cps": "Collection(s)",
     "create_group": "Create Group",
-    "no_cp_specified": "Group has no collection protocols. Add at least one collection protocol to the group.",
+    "no_cp_specified": "Group has no collections. Add at least one collection to the group.",
 
-    "empty_list": "No collection protocol groups to show!",
-    "loading_list": "Loading collection protocol groups, please wait for a moment...",
+    "empty_list": "No collection groups to show!",
+    "loading_list": "Loading collection  groups, please wait for a moment...",
 
     "participant": "Participant",
     "visit": "Visit",
@@ -490,7 +490,7 @@
     "protocol_id": "PPID",
     "filter_title": "Filters",
     "spmn_label_or_barcode": "Specimen Label / Barcode",
-    "collection_protocol": "Collection Protocol",
+    "collection_protocol": "Collection",
     "regDate": "Registration Date",
     "reg_another_protocol": "Add to Another Protocol",
     "confirm_merging": "Merging Participant",
@@ -738,7 +738,7 @@
     "biohazards": "Biohazards",
     "created_on": "Created On",
     "created_by": "Created By",
-    "cp": "Collection Protocol",
+    "cp": "Collection",
     "ppid": "PPID",
     "concentration_unit": "&#181;g/&#181;l",
     "manual_selection": "Manual allocation",
