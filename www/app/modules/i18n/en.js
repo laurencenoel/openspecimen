@@ -8,7 +8,7 @@
     "users": "Users",
     "institutes": "Institutes",
     "sites": "Sites",
-    "distribution_protocols": "Distribution (outside Hudeca)",
+    "distribution_protocols": "Distribution",
     "roles": "Roles",
     "queries": "Saved searches",
     "containers": "Containers",
@@ -21,7 +21,7 @@
     "consent_statements": "Consents",
     "cp_desc": "Create, update SOP of visits and specimens",
     "rde_desc": "Rapidly capture patients, visits and specimens data",
-    "dp_desc": "Create, update procedures for distributing specimens to laboratories that are not part of Hudeca",
+    "dp_desc": "Distribution to labs that are NOT part of Hudeca",
     "institutes_desc": "Update information about institutions",
     "users_desc": "Add, rename and manage users",
     "roles_desc": "Create, update user access controls",
@@ -32,7 +32,7 @@
     "forms_desc": "Create and manage custom forms",
     "settings_desc": "Manage application configuration settings",
     "distribution_orders_desc": "Create, execute request orders for distributing specimens",
-    "shipping_and_tracking_desc": "Create, ship, track and receive specimen shipments (for Hudeca members)",
+    "shipping_and_tracking_desc": "Create and track specimen shipments (Hudeca members)",
     "jobs_desc": "Create, schedule, execute jobs",
     "training_desc": "User manual and training videos portal",
     "consent_statements_desc": "Manage coded consent statements"
@@ -1111,7 +1111,7 @@
   },
   
   "dp": {
-    "list": "Distribution protocols (outside of Hudeca)",
+    "list": "Distribution (ouside of Hudeca)",
     "create_dp_title": "Create Distribution Protocols",
     "update_dp_title": "Update Distribution Protocols",
     "title": "Title",
