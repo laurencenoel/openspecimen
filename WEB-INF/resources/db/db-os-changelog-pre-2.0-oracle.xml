@@ -685,8 +685,12 @@
             <column name="IDENTIFIER" type="NUMBER(19,0)">
                 <constraints nullable="false" primaryKey="true" primaryKeyName="SYS_C00107479" />
             </column>
-            <column name="CONCEPT_CODE" type="VARCHAR2(40 BYTE)"/>
+            <column name="CONCEPT_CODE" type="VARCHAR2(40 BYTE)"/>			
             <column name="DEFINITION" type="VARCHAR2(500 BYTE)"/>
+			<column name="SHORT_URI" type="VARCHAR2(225 BYTE)"/>
+            <column name="DEFINITION" type="VARCHAR2(500 BYTE)"/>
+			<column name="DESCRIPTORS" type="VARCHAR2(225 BYTE)"/>
+			<column name="PARENTS" type="VARCHAR2(225 BYTE)"/>
             <column name="PARENT_IDENTIFIER" type="NUMBER(19,0)"/>
             <column name="VALUE" type="VARCHAR2(225 BYTE)"/>
             <column name="PUBLIC_ID" type="VARCHAR2(30 BYTE)"/>
