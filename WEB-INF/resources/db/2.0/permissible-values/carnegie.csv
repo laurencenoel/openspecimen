@@ -1,2 +1,2 @@
-"IDENTIFIER","CONCEPT_CODE","SHORT_URI","DEFINITION","DESCRIPTORS","PARENTS","PARENT_IDENTIFIER","value","PUBLIC_ID"
-"getNextPvId()","","HsapDv","","EHDAA2","","","Carnegie stage 01","carnegie"
+"IDENTIFIER","CONCEPT_CODE","SHORT_URI","DEFINITION","DESCRIPTORS","PARENTS","value","PUBLIC_ID"
+"getNextPvId()","","HsapDv","","EHDAA2","","Carnegie stage 01","carnegie"
