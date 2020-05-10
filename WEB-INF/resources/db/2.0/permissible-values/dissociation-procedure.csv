@@ -1,4 +1,4 @@
-"IDENTIFIER","CONCEPT_CODE","DEFINITION","value","PUBLIC_ID"
-"getNextPvId()","","","Enzymatic dissociation","dissociation_procedure"
-"getNextPvId()","","","Mechanical dissociation","dissociation_procedure"
-"getNextPvId()","","","Fluidigm C1-based dissociation","dissociation_procedure"
+"IDENTIFIER","CONCEPT_CODE","SHORT_URI","DEFINITION","value","PUBLIC_ID"
+"getNextPvId()","","EFO_0009128","","Enzymatic dissociation","dissociation_procedure"
+"getNextPvId()","","EFO_0009129","","Mechanical dissociation","dissociation_procedure"
+"getNextPvId()","","EFO_0010048","","Fluidigm C1-based dissociation","dissociation_procedure"

@@ -216,9 +216,23 @@
             <column name="LAST_UPDATED"/>
         </insert>
 		<insert tableName="catissue_cde">
-            <column name="PUBLIC_ID" value="organ_part"/>
-            <column name="LONG_NAME" value="Organ part"/>
-            <column name="DEFINITION" value="Organ part"/>
+            <column name="PUBLIC_ID" value="organ_type"/>
+            <column name="LONG_NAME" value="Organ type"/>
+            <column name="DEFINITION" value="Organ type"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		<insert tableName="catissue_cde">
+            <column name="PUBLIC_ID" value="tissue_type"/>
+            <column name="LONG_NAME" value="Tissue type"/>
+            <column name="DEFINITION" value="Tissue type"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		<insert tableName="catissue_cde">
+            <column name="PUBLIC_ID" value="cell_type"/>
+            <column name="LONG_NAME" value="Cell type"/>
+            <column name="DEFINITION" value="Cell type"/>
             <column name="VERSION" value="1.0"/>
             <column name="LAST_UPDATED"/>
         </insert>
