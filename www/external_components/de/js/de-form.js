@@ -357,10 +357,28 @@ edu.common.de.Form = function(args) {
     var rows = this.formDef.rows;
     this.processFormDef("", rows);
 
-    var formCtrls = $("<div/>");
-    for (var i = 0; i < rows.length; ++i) {
-      formCtrls.append(this.rowCtrls(rows[i]));
+    var pages = [];
+    if (this.formDef.layouts && this.formDef.layouts.length > 0) {
+      pages = getPages(this.formDef);
+    } else {
+      pages.push({prev: null, next: null, rows: rows, fieldObjs: []});
     }
+
+    this.pages = pages;
+    var formCtrls = $("<div/>");
+    for (var pi = 0; pi < pages.length; ++pi) {
+      var page = pages[pi];
+      var pageEl = page.el = $('<div/>').css({display: 'none'});
+
+      for (var ri = 0; ri < page.rows.length; ++ri) {
+        pageEl.append(this.rowCtrls(page, ri));
+      }
+
+      formCtrls.append(pageEl);
+    }
+
+    this.currentPage = pages[0];
+    this.currentPage.el.css({display: 'block'});
 
     if (args.showActionBtns === undefined || 
         args.showActionBtns === null || 
@@ -374,6 +392,7 @@ edu.common.de.Form = function(args) {
     } else {
       var panel = edu.common.de.Utility.panel(caption, formCtrls, 'default', args);
       this.formDiv.append(panel);
+      this.updatePb();
     }
     this.setValue(this.formData);
 
@@ -383,9 +402,52 @@ edu.common.de.Form = function(args) {
       this.formDiv.find("input").change(evalSl);
       this.formDiv.find("textarea").change(evalSl);
       this.formDiv.find("select").change(evalSl);
-      evalSl();
+
+      if (this.$delayedInits && this.$delayedInits.length > 0) {
+        $.when.apply($, this.$delayedInits).then(
+          function() {
+            evalSl();
+          }
+        );
+      } else {
+        evalSl();
+      }
     }
   };
+
+  function getPages(formDef) {
+    var fieldsMap = {};
+    for (var i = 0; i < formDef.rows.length; ++i) {
+      for (var j = 0; j < formDef.rows[i].length; ++j) {
+        fieldsMap[formDef.rows[i][j].name] = formDef.rows[i][j];
+      }
+    }
+
+    var pages = [];
+
+    var prev = null, next = null;
+    var layout = formDef.layouts[0];
+    for (var pi = 0; pi < layout.pages.length; ++pi) {
+      var page = { prev: prev, next: null, rows: [], fieldObjs: [] };
+      if (prev) {
+        prev.next = page;
+      }
+
+      for (var ri = 0; ri < layout.pages[pi].rows.length; ++ri) {
+        var pageRow = [];
+        for (var ci = 0; ci < layout.pages[pi].rows[ri].length; ++ci) {
+          pageRow.push(fieldsMap[layout.pages[pi].rows[ri][ci].field]);
+        }
+
+        page.rows.push(pageRow);
+      }
+
+      prev = page;
+      pages.push(page);
+    }
+
+    return pages;
+  }
 
   this.evaluateSkipLogic = function() {
     for (var i = 0; i < this.fieldObjs.length; ++i) {
@@ -451,8 +513,8 @@ edu.common.de.Form = function(args) {
     return args.dateFormat;
   }
 
-  this.rowCtrls = function(row) {
-    var fields = row;
+  this.rowCtrls = function(page, rowNum) {
+    var fields = page.rows[rowNum];
     var noFields = fields.length;
     var width = noFields == 1 ? 8 : Math.floor(12 / noFields);
     var colWidthCls = "col-xs-" + width;
@@ -461,13 +523,13 @@ edu.common.de.Form = function(args) {
     for (var i = 0; i < fields.length; ++i) {
       var field = fields[i];
       var widthCls = (field.type == 'subForm') ? "col-xs-12" : colWidthCls;
-      rowDiv.append($("<div/>").addClass(widthCls).append(this.getFieldEl(field)));
+      rowDiv.append($("<div/>").addClass(widthCls).append(this.getFieldEl(page, field)));
     }
 
     return rowDiv;
   };
 
-  this.getFieldEl = function(field) {
+  this.getFieldEl = function(page, field) {
     var id      = 'de-' + field.name
 
     var labelEl = undefined;
@@ -481,6 +543,7 @@ edu.common.de.Form = function(args) {
 
     var inputEl = fieldObj.render();
     this.fieldObjs.push(fieldObj);
+    page.fieldObjs.push(fieldObj);
 
     var fieldEl = fieldObj.$el = $("<div/>").addClass("form-group");
     if (labelEl) {
@@ -523,37 +586,101 @@ edu.common.de.Form = function(args) {
   };
 
   this.getActionButtons = function() {
-    var save       = $("<button/>").attr({"type": "button", "id": "saveForm"}).addClass("btn btn-primary").append("Save");
-    var cancel     = $("<button/>").attr({"type": "button", "id": "cancelForm"}).addClass("btn btn-default").append("Cancel");
-    var deleteForm = $("<button/>").attr({"type": "button", "id": "deleteForm"}).addClass("btn btn-warning").append("Delete");
-    var print      = $("<button/>").attr({"type": "button", "id": "print"}).addClass("btn btn-info").append("Print");
-
-    if (!this.formData) {
-      deleteForm.attr('disabled', true);
-      print.attr('disabled', true);
-    }
+    var btns = $("<div/>").addClass("modal-footer");
 
     var that = this;
-    save.on("click", function() { that.save(); });
+    var cancel = $("<button/>").addClass("btn btn-default cancel").append("Cancel");
     cancel.on("click", function() { that.cancel(); });
-    deleteForm.on("click", function() { that.deleteForm(); });
-    print.on("click", function() { that.print(); });
-    
-    var btns =   $("<div/>").addClass("modal-footer")
-      .append(cancel).append(deleteForm)
-      .append(print);
+    btns.append(cancel);
+
+    if (this.pages.length > 1) {
+      var previous = $('<button/>').addClass('btn btn-secondary previous').append('Previous');
+      previous.on('click', function() { that.previous(); });
+      btns.append(previous);
+    }
 
     if (args.showSaveNext == true || args.showSaveNext == 'true') {
-      var saveNext  = $("<button/>").attr({"type": "button", "id": "saveNextForm"})
-        .addClass("btn btn-primary")
-        .append("Save and Next");
+      var saveNext = $("<button/>").addClass("btn btn-primary save-next").append("Save and Next");
       saveNext.on("click", function() { that.save(true); });
       btns.append(saveNext);
     }
 
+    var save = $("<button/>").addClass("btn btn-primary save").append("Save");
+    save.on("click", function() { that.save(); });
     btns.append(save);
+
+    if (this.pages.length > 1) {
+      var next = $('<button/>').addClass('btn btn-primary next').append('Next');
+      next.on('click', function() { that.next(); });
+      btns.append(next);
+      btns.addClass('first-page');
+    } else {
+      btns.addClass('last-page');
+    }
+
+    this.btns = btns;
     return edu.common.de.Utility.row().append(btns);
   };
+
+  this.updatePb = function() {
+    if (this.pages.length <= 1) {
+      return;
+    }
+
+    var pb = this.formDiv.find('.pb');
+    if (!pb || pb.length == 0) {
+      var pt = this.formDiv.find('.panel-title');
+      if (!pt || pt.length == 0) {
+        return;
+      }
+
+      pb = $('<div/>').addClass('pb');
+      pt.append(pb);
+    }
+
+    var currentIdx = this.pages.indexOf(this.currentPage) + 1;
+    pb.text(currentIdx + ' / ' + this.pages.length);
+  }
+
+  this.next = function() {
+    if (!this.validateCurrentPage()) {
+      return;
+    }
+
+    if (!this.currentPage.prev) {
+      this.btns.removeClass('first-page');
+    }
+
+    if (this.currentPage.next) {
+      this.currentPage.el.css({display: 'none'});
+      this.currentPage = this.currentPage.next;
+      this.currentPage.el.css({display: 'block'});
+    }
+
+    if (!this.currentPage.next) {
+      this.btns.addClass('last-page');
+    }
+
+    this.updatePb();
+  }
+
+  this.previous = function() {
+    if (!this.currentPage.next) {
+      this.btns.removeClass('last-page');
+    }
+
+    if (this.currentPage.prev) {
+      this.currentPage.el.css({display: 'none'});
+      this.currentPage = this.currentPage.prev;
+      this.currentPage.el.css({display: 'block'});
+    }
+
+    if (!this.currentPage.prev) {
+      this.btns.addClass('first-page');
+    }
+
+    this.updatePb();
+  }
 
   this.save = function(next) {
     if (!this.validate()) {
@@ -626,10 +753,24 @@ edu.common.de.Form = function(args) {
     }
   };
   
-  this.validate = function() {
+  this.validateCurrentPage = function() {
+    if (!this.validate(this.currentPage)) {
+      if (args.onValidationError) {
+        args.onValidationError();
+      }
+
+      return false;
+    }
+
+    return true;
+  }
+
+  this.validate = function(page) {
+    var fieldObjs = (page && page.fieldObjs) || this.fieldObjs;
+
     var valid = true;
-    for (var i = 0; i < this.fieldObjs.length; ++i) {
-      if (!this.fieldObjs[i].validate()) { // validate all fields
+    for (var i = 0; i < fieldObjs.length; ++i) {
+      if (!fieldObjs[i].validate()) { // validate all fields
         valid = false;
       }
     }
@@ -2075,8 +2216,7 @@ edu.common.de.Utility = {
 
     var panelBody = $("<div/>").addClass("panel-body").append(content);
     panelDiv.append(panelBody);
-
-    return panelDiv;
+    return panelDiv.addClass('de-form');
   },
 
   row: function() {
@@ -2167,6 +2307,8 @@ edu.common.de.LookupField = function(params, callback) {
 
   this.validator;
 
+  this.params = params;
+
   var timeout = undefined;
 
   var field = params.field;
@@ -2210,8 +2352,16 @@ edu.common.de.LookupField = function(params, callback) {
   };
 
   var initSelection = function(elem, callback) {
+    var initQs = [];
+    if (that.$form) {
+      initQs = that.$form.$delayedInits = that.$form.$delayedInits || [];
+    }
+
     if (!that.value && field.defaultType != 'none') {
-      $.when(that.getDefaultValue()).done(
+      var dd = that.getDefaultValue();
+      initQs.push(dd);
+
+      $.when(dd).done(
         function(result) {
           that.value = result.id;
           that.control.setValue(result.id);
@@ -2219,7 +2369,10 @@ edu.common.de.LookupField = function(params, callback) {
         }
       );
     } else if (!!that.value) {
-      $.when(that.lookup(that.value)).done(
+      var dd = that.lookup(that.value);
+      initQs.push(dd);
+
+      $.when(dd).done(
         function(result) {
           callback(result);
         }
@@ -2320,7 +2473,7 @@ edu.common.de.LookupField = function(params, callback) {
   };
 
   this.getDefaultValue = function() {
-    return this.svc.getDefaultEntity();
+    return this.svc.getDefaultEntity(this);
   };
 
   this.lookup = function(id) {
@@ -2344,8 +2497,6 @@ edu.common.de.LookupSvc = function(params) {
   var defaultList = {};
 
   var xhrMap = {};
-
-  var defaultValue;
 
   this.defaultCacheKey = function(queryTerm, searchFilters, field) {
     var resultKey = '_default';
@@ -2459,19 +2610,14 @@ edu.common.de.LookupSvc = function(params) {
     return deferred.promise();
   };
 
-  this.getDefaultEntity = function() {
+  this.getDefaultEntity = function(luField) {
     var deferred = $.Deferred(); 
-    if (defaultValue) {
-      deferred.resolve(defaultValue);
-      return deferred.promise();
-    }
 
     var that = this;
-    this.getDefaultValue().done(
+    this.getDefaultValue(luField).done(
       function(data) {
         var result = that.formatResult(data);
         entitiesMap[result.id] = result;
-        defaultValue = result;
         deferred.resolve(result);
       })
       .fail(function(data) {
@@ -2499,15 +2645,8 @@ edu.common.de.SignatureWidget = function(canvas) {
     var bounds = canvas.getBoundingClientRect();
 
     if (e.changedTouches && e.changedTouches[0]) {
-      //
-      // xOffset and yOffset gives the (x, y) coordinates
-      // on the screen from where the canvas starts
-      //
-      var yOffset = canvas.offsetTop  || 0;
-      var xOffset = canvas.offsetLeft || 0;
-
-      pos.x = e.changedTouches[0].pageX - xOffset;
-      pos.y = e.changedTouches[0].pageY - yOffset;
+      pos.x = e.changedTouches[0].clientX - bounds.x;
+      pos.y = e.changedTouches[0].clientY - bounds.y;
     } else if (e.layerX || 0 == e.layerX) {
       pos.x = e.layerX;
       pos.y = e.layerY;
@@ -2526,15 +2665,26 @@ edu.common.de.SignatureWidget = function(canvas) {
   }
 
   function onMouseDown(evt) {
+    if (evt.target == canvas) {
+      evt.preventDefault();
+    }
+
     lastPos = getPosition(canvas, evt);
     ctxt.beginPath();
     ctxt.moveTo(lastPos.x, lastPos.y);
 
     canvas.addEventListener('mousemove', onMouseMove, false);
+    canvas.addEventListener('touchmove', onMouseMove, false);
+
     canvas.addEventListener('mouseup', onMouseUp, false);
+    canvas.addEventListener('touchend', onMouseUp, false);
   }
 
   function onMouseMove(evt) {
+    if (evt.target == canvas) {
+      evt.preventDefault();
+    }
+
     if (!lastPos) {
       return;
     }
@@ -2550,14 +2700,22 @@ edu.common.de.SignatureWidget = function(canvas) {
   }
 
   function onMouseUp(evt) {
+    if (evt.target == canvas) {
+      evt.preventDefault();
+    }
+
     ctxt.stroke();
     lastPos = undefined;
 
     canvas.removeEventListener('mousemove', onMouseMove, false);
+    canvas.removeEventListener('touchmove', onMouseMove, false);
+
     canvas.removeEventListener('mouseup', onMouseUp, false);
+    canvas.removeEventListener('touchend', onMouseUp, false);
   }
 
   canvas.addEventListener('mousedown', onMouseDown, false);
+  canvas.addEventListener('touchstart', onMouseDown, false);
 
   this.clear = function() {
     ctxt.clearRect(0, 0, canvas.width, canvas.height);
@@ -2659,7 +2817,7 @@ edu.common.de.Signature = function(id, field, args) {
           dataType: 'json',
           data: JSON.stringify({dataUrl: dataUrl})
         }).done(function(data) {
-          that.setValue(that.recId, data.fileId);
+          that.setValue(that.recId, data.fileId, dataUrl);
         }).fail(function(data) {
           if (args.onSaveError) {
             args.onSaveError(data);
@@ -2691,13 +2849,15 @@ edu.common.de.Signature = function(id, field, args) {
     return {name: field.name, value: this.widget.getData()};
   }
 
-  this.setValue = function(recId, value) {
+  this.setValue = function(recId, value, dataUrl) {
     this.recId = recId;
     this.value = value;
 
     if (this.value) {
       var url = "#";
-      if (typeof args.fileDownloadUrl == "function") {
+      if (dataUrl) {
+        url = dataUrl;
+      } else if (typeof args.fileDownloadUrl == "function") {
         url = args.fileDownloadUrl(args.id, this.recId, field.fqn, this.value);
       } else {
         url = args.fileDownloadUrl;

@@ -41,25 +41,46 @@ openspecimen.ui.fancy.Pvs = edu.common.de.LookupSvc.extend({
   formatResults: function(pvs) {
     var result = [];
     for (var i = 0; i < pvs.length; ++i) {
-      result.push({id: pvs[i].id, text: pvs[i].value});
+      result.push({id: pvs[i].id, text: pvs[i].value || pvs[i].text});
     }
 
     return result;
   },
 
   formatResult: function(data) {
-    return !data ? "" : {id: data.id, text: data.value};
+    return !data ? "" : {id: data.id, text: data.value || data.text};
   },
 
-  getDefaultValue: function() {
+  getDefaultValue: function(luField) {
+    var defaultValue = luField.params.field.defaultValue;
+
     var deferred = $.Deferred();
-    deferred.resolve(undefined);
+    if (!defaultValue) {
+      deferred.resolve(undefined);
+      return deferred.promise();
+    }
+
+    luField.search(defaultValue).done(
+      function(result) {
+        if (result && result.length > 0) {
+          result = result[0];
+        } else {
+          result = undefined;
+        }
+
+        deferred.resolve(result);
+      }
+    );
+
     return deferred.promise();
   },
 
   getHeaders: function() {
     var $http = angular.element(document).injector().get('$http');
-    return {'X-OS-API-TOKEN': $http.defaults.headers.common['X-OS-API-TOKEN']};
+    return {
+      'X-OS-API-TOKEN': $http.defaults.headers.common['X-OS-API-TOKEN'],
+      'X-OS-FDE-TOKEN': $http.defaults.headers.common['X-OS-FDE-TOKEN']
+    };
   }
 });
 

@@ -24,6 +24,7 @@ public class PvControlFactory extends AbstractLookupControlFactory {
 		ctrl.setAttribute(ParserUtil.getTextValue(ele, "attribute"));
 		ctrl.setLeafNode(ParserUtil.getBooleanValue(ele, "leafValue"));
 		ctrl.setRootNode(ParserUtil.getBooleanValue(ele, "rootValue"));
+		ctrl.setDefaultValue(ParserUtil.getTextValue(ele, "defaultValue"));
 		return ctrl;
 	}
 

@@ -22,6 +22,8 @@ public class PvControl extends AbstractLookupControl implements Serializable {
 
 	private boolean rootNode;
 
+	private String defaultValue;
+
 	public String getAttribute() {
 		return attribute;
 	}
@@ -44,6 +46,14 @@ public class PvControl extends AbstractLookupControl implements Serializable {
 
 	public void setRootNode(boolean rootNode) {
 		this.rootNode = rootNode;
+	}
+
+	public String getDefaultValue() {
+		return defaultValue;
+	}
+
+	public void setDefaultValue(String defaultValue) {
+		this.defaultValue = defaultValue;
 	}
 
 	@Override
@@ -71,6 +81,7 @@ public class PvControl extends AbstractLookupControl implements Serializable {
 		props.put("attribute", attribute);
 		props.put("leafValue", leafNode);
 		props.put("rootValue", rootNode);
+		props.put("defaultValue", defaultValue);
 	}
 
 	@Override
@@ -80,6 +91,7 @@ public class PvControl extends AbstractLookupControl implements Serializable {
 		XmlUtil.writeElement(writer, "attribute", attribute);
 		XmlUtil.writeElement(writer, "leafValue", leafNode);
 		XmlUtil.writeElement(writer, "rootValue", rootNode);
+		XmlUtil.writeCDataElement(writer, "defaultValue", defaultValue);
 		XmlUtil.writeElementEnd(writer, "pvField");
 	}
 

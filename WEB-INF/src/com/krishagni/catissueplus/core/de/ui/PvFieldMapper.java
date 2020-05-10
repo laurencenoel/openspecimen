@@ -3,6 +3,8 @@ package com.krishagni.catissueplus.core.de.ui;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.apache.commons.lang3.StringUtils;
+
 import edu.common.dynamicextensions.domain.nui.Container;
 import edu.common.dynamicextensions.domain.nui.Control;
 import edu.wustl.dynamicextensions.formdesigner.mapper.DefaultControlMapper;
@@ -24,6 +26,10 @@ public class PvFieldMapper extends DefaultControlMapper {
 			if (settingsMap.get("leafValue") != null) {
 				control.setLeafNode(Boolean.parseBoolean(settingsMap.get("leafValue").toString()));
 			}
+
+			if (settingsMap.get("defaultValue") != null) {
+				control.setDefaultValue(settingsMap.get("defaultValue").toString());
+			}
 		}
 
 		return control;
@@ -41,6 +47,10 @@ public class PvFieldMapper extends DefaultControlMapper {
 		Map<String, Object> settingsMap = new HashMap<>();
 		settingsMap.put("attribute", pvCtrl.getAttribute());
 		settingsMap.put("leafValue", pvCtrl.isLeafNode());
+		if (StringUtils.isNotBlank(pvCtrl.getDefaultValue())) {
+			settingsMap.put("defaultValue", pvCtrl.getDefaultValue());
+		}
+
 		controlProps.setProperty("settings", settingsMap);
 		return controlProps;
 	}
