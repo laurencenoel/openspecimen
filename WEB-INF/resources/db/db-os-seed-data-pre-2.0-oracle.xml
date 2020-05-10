@@ -326,6 +326,43 @@
             <column name="VERSION" value="1.0"/>
             <column name="LAST_UPDATED"/>
         </insert>
+		<insert tableName="CATISSUE_CDE">
+            <column name="PUBLIC_ID" value="add_prop1"/>
+            <column name="LONG_NAME" value="Additional info 1"/>
+            <column name="DEFINITION" value="Additional info 1"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		<insert tableName="CATISSUE_CDE">
+            <column name="PUBLIC_ID" value="add_prop2"/>
+            <column name="LONG_NAME" value="Additional info 2"/>
+            <column name="DEFINITION" value="Additional info 2"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+				<insert tableName="CATISSUE_CDE">
+            <column name="PUBLIC_ID" value="add_prop3"/>
+            <column name="LONG_NAME" value="Additional info 3"/>
+            <column name="DEFINITION" value="Additional info 3"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		<insert tableName="CATISSUE_CDE">
+            <column name="PUBLIC_ID" value="add_prop4"/>
+            <column name="LONG_NAME" value="Additional info 4"/>
+            <column name="DEFINITION" value="Additional info 4"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		<insert tableName="CATISSUE_CDE">
+            <column name="PUBLIC_ID" value="add_prop5"/>
+            <column name="LONG_NAME" value="Additional info 5"/>
+            <column name="DEFINITION" value="Additional info 5"/>
+            <column name="VERSION" value="1.0"/>
+            <column name="LAST_UPDATED"/>
+        </insert>
+		
+		
 		
 
 
