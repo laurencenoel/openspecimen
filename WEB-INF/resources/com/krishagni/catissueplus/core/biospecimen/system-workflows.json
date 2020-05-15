@@ -107,7 +107,7 @@
                 },
                 {
                     "expr": "Specimen.tissueSite",
-                    "caption": "Anatomic Category"
+                    "caption": "Main organ"
                 },
                  {
                     "expr": "Specimen.availableQty",
