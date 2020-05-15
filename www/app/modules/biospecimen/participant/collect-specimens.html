@@ -255,13 +255,16 @@
               </os-date-picker>
               <div os-field-error field="collectionForm.visitDate"></div>
             </div>
-            <div class="col-xs-3 input">
+            <div class="col-xs-3 input read">
+			    <label class="os-md-input-label" translate="specimens.visit_site">Visit Site</label>
+				<span>{{cpr.site}}</span>
+		
 			<!--
               <os-sites name="site" md-type="true" ng-model="visit.site" list-all="{{!mrnAccessRestriction}}"
                 show-label="true" placeholder="{{'specimens.visit_site' | translate}}" required>
               </os-sites>			  
 			 -->
-			 <span>{{visit.site}}</span>
+
               <div os-field-error field="collectionForm.site"></div>
             </div>
           </div>
