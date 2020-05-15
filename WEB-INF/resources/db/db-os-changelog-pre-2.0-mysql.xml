@@ -644,7 +644,10 @@
                 <constraints nullable="false" primaryKey="true"/>
             </column>
             <column name="CONCEPT_CODE" type="VARCHAR(40)"/>
+			<column name="SHORT_URI" type="TEXT"/>
             <column name="DEFINITION" type="TEXT"/>
+			<column name="DESCRIPTORS" type="TEXT"/>
+			<column name="PARENTS" type="TEXT"/>
             <column name="PARENT_IDENTIFIER" type="BIGINT"/>
             <column name="VALUE" type="VARCHAR(225)"/>
             <column name="PUBLIC_ID" type="VARCHAR(30)"/>

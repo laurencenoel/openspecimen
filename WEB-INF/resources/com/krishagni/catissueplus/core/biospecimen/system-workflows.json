@@ -107,7 +107,7 @@
                 },
                 {
                     "expr": "Specimen.tissueSite",
-                    "caption": "Anatomic Category"
+                    "caption": "Main organ"
                 },
                  {
                     "expr": "Specimen.availableQty",
@@ -149,7 +149,7 @@
                 },
                 {
                     "expr": "Specimen.tissueSite",
-                    "caption": "Anatomic Site"
+                    "caption": "Main Organ"
                 },
  
                 {
@@ -184,7 +184,7 @@
                 },
                 {
                     "expr": "Specimen.tissueSite",
-                    "caption": "Anatomic Site"
+                    "caption": "Main organ"
                 },
                 {
                     "expr": "CollectionProtocol.shortTitle",
@@ -226,7 +226,7 @@
                 },
                 {
                     "expr": "Specimen.tissueSite",
-                    "caption": "Anatomic Site"
+                    "caption": "Main organ"
                 },
                 {
                     "expr": "CollectionProtocol.shortTitle",
@@ -264,7 +264,7 @@
                 },
                 {
                     "expr": "Specimen.tissueSite",
-                    "caption": "Anatomic Site"
+                    "caption": "Main organ"
                 },
                 {
                     "expr": "CollectionProtocol.shortTitle",
@@ -307,7 +307,7 @@
                 },
                 {
                     "expr": "Specimen.tissueSite",
-                    "caption": "Anatomic Site"
+                    "caption": "Main organ"
                 },
                 {
                     "expr": "CollectionProtocol.shortTitle",

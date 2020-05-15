@@ -117,10 +117,11 @@
     <span ng-if="currVisit.status != 'Missed Collection' && currVisit.status != 'Not Collected'">
       <div class="form-group">
         <label class="col-xs-3 control-label" translate="visits.visit_site">Site of Visit</label>
-        <div class="col-xs-6">
+        <div class="col-xs-6"><span name="site" ng-model="currVisit.site">{{cpr.site | osNoValue}}</span>
+		<!--
           <os-sites name="site" ng-model="currVisit.site" list-all="{{!visitCtx.mrnAccessRestriction}}"
             required placeholder="{{'visits.visit_site' | translate}}">
-          </os-sites>
+          </os-sites>-->
           <div os-field-error field="vform.site"></div>
         </div>
       </div>

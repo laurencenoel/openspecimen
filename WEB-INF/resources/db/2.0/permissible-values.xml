@@ -339,7 +339,7 @@
           public_id = 'Tissue_Site_PID' or public_id = 'anatomic_site'
       </sqlCheck>
     </preConditions>
-    <loadUpdateData file="db/2.0/permissible-values/tissue-site.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+    <loadUpdateData file="db/2.0/permissible-values/main-organ.csv" tableName="catissue_permissible_value" primaryKey="identifier">
       <column name="identifier" type="COMPUTED"/>
     </loadUpdateData>
   </changeSet>
@@ -486,13 +486,46 @@
         from 
           catissue_permissible_value
         where
-          public_id = 'organ_part'
+          public_id = 'organ_type'
       </sqlCheck>
     </preConditions>
-    <loadUpdateData file="db/2.0/permissible-values/organ-part.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+    <loadUpdateData file="db/2.0/permissible-values/organ-PV.csv" tableName="catissue_permissible_value" primaryKey="identifier">
       <column name="identifier" type="COMPUTED"/>
     </loadUpdateData>
   </changeSet>
+  
+    <changeSet author="vpawar" id="Tissue with organ info">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'tissue_type'
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/tissue-PV.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+      <changeSet author="vpawar" id="Cell with organ info">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'cell_type'
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/cell-PV.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
   
   
   <changeSet author="vpawar" id="F infertility disorder PVs">
@@ -630,4 +663,86 @@
       <column name="identifier" type="COMPUTED"/>
     </loadUpdateData>
   </changeSet>
+  
+    <changeSet author="vpawar" id="Add Prop1 PVs" runOnChange="true">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'add_prop1'  
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/add-prop1.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+      <changeSet author="vpawar" id="Add Prop2 PVs" runOnChange="true">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'add_prop2'  
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/add-prop2.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+    <changeSet author="vpawar" id="Add Prop3 PVs" runOnChange="true">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'add_prop3'  
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/add-prop3.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+    <changeSet author="vpawar" id="Add Prop4 PVs" runOnChange="true">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'add_prop4'  
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/add-prop4.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+  <changeSet author="vpawar" id="Add Prop5 PVs" runOnChange="true">
+    <preConditions onFail="MARK_RAN">
+      <sqlCheck expectedResult="0">
+        select 
+          case when (count(*) > 0) then 1 else 0 end 
+        from 
+          catissue_permissible_value
+        where
+          public_id = 'add_prop5'  
+      </sqlCheck>
+    </preConditions>
+    <loadUpdateData file="db/2.0/permissible-values/add-prop5.csv" tableName="catissue_permissible_value" primaryKey="identifier">
+      <column name="identifier" type="COMPUTED"/>
+    </loadUpdateData>
+  </changeSet>
+  
+  
 </databaseChangeLog>

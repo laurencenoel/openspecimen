@@ -308,13 +308,13 @@ public class VisitFactoryImpl implements VisitFactory {
 
 	private void setSite(VisitDetail visitDetail, Visit visit, OpenSpecimenException ose) {
 		Site site = null;
-		String visitSite = visitDetail.getSite();
+		CollectionProtocolRegistration cpr = visit.getRegistration();
+		site = cpr.getSite();
+		/*String visitSite = visitDetail.getSite();
+		
 		if (StringUtils.isBlank(visitSite)) {
-
-
 			if (visit.getRegistration() != null) {
-				CollectionProtocolRegistration cpr = visit.getRegistration();
-				
+				CollectionProtocolRegistration cpr = visit.getRegistration();				
 				if (cpr.getSite() != null) {
 					site = cpr.getSite();
 				} else {
@@ -343,6 +343,7 @@ public class VisitFactoryImpl implements VisitFactory {
 				return;
 			}
 		}
+		*/
 
 		visit.setSite(site);
 	}

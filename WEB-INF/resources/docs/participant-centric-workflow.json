@@ -912,7 +912,7 @@
                },
                {
                    "expr": "Specimen.tissueSite",
-                   "caption": "Anatomic Site"
+                   "caption": "Main organ"
                },
                {
                    "expr": "Specimen.pathologicalStatus",
@@ -958,7 +958,7 @@
                },
                {
                    "expr": "Specimen.tissueSite",
-                   "caption": "Anatomic Site"
+                   "caption": "Main organ"
                },
                {
                    "expr": "Specimen.pathologicalStatus",
