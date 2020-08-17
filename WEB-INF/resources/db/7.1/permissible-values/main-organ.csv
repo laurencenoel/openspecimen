@@ -1,0 +1,6 @@
+"IDENTIFIER","CONCEPT_CODE","SHORT_URI","DEFINITION","value","PUBLIC_ID"
+"getNextPvId()",HAN,UBERON_0002398,,"hand","anatomic_site"
+"getNextPvId()",FOO,UBERON_0002387,,"foot","anatomic_site"
+"getNextPvId()",ARM,UBERON_0001460,,"arm","anatomic_site"
+"getNextPvId()",LEG,UBERON_0000978,,"leg","anatomic_site"
+"getNextPvId()",YOL,UBERON_0001040,,"yolk sac","anatomic_site"
