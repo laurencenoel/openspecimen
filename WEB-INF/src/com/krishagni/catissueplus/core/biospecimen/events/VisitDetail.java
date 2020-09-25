@@ -275,7 +275,9 @@ public class VisitDetail extends VisitSummary {
 		if (visit.getSite() != null) {
 			detail.setSite(visit.getSite().getName());
 		} else {
-			detail.setSite(cpr.getSite().getName());
+			if (cpr.getSite() != null) {
+				detail.setSite(cpr.getSite().getName());
+			}
 		}
 		
 		if (!visit.isUnplanned()) {
