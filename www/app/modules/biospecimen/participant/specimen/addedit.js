@@ -11,7 +11,6 @@ angular.module('os.biospecimen.specimen.addedit', [])
     var inputCtxts;
 
     function init() {
-	  window.alert("ADDEDITJS INIT");
       $scope.opts = {
         cp: cp, cpr: cpr, visit: visit, spmnReq: spmnReq,
         extensionCtxt: extensionCtxt, hasDict: hasDict,
@@ -28,23 +27,19 @@ angular.module('os.biospecimen.specimen.addedit', [])
 
       CpConfigSvc.getCommonCfg(cp.id, 'addSpecimen').then(
         function(cfg) {
-		  window.alert("ADDEDITJS CFG");
           angular.extend($scope.opts, cfg || {});
         }
       );
 
 
       if (!specimen.id && !specimen.reqId && defSpmns.length > 0) {
-		 window.alert("ADDEDITJS not specimen reqId");
         inputCtxts = $scope.inputCtxts = getInputCtxts(defSpmns);
       } else {
-		  window.alert("ADDEDITJS specimen reqId");
         inputCtxts = $scope.inputCtxts = [{specimen: angular.copy(specimen), form: {}, open: true}]
       }
     }
 
     function getInputCtxts(defSpmns) {
-	  window.alert("ADDEDITJS sgetInputCtxt");
       return (defSpmns || []).map(
         function(defSpmn, idx) {
           var spmn = new Specimen({lineage: 'New', visitId: visit.id, labelFmt: cpr.specimenLabelFmt});
@@ -205,7 +200,6 @@ angular.module('os.biospecimen.specimen.addedit', [])
     };
 
     function updateParent(parent, children) {
-	  window.alert("update parent");
 	  
       angular.forEach(children, function(child) { child.parent = parent; });
       parent.children = parent.children || [];

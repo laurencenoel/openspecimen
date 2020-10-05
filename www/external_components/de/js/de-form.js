@@ -701,6 +701,19 @@ edu.common.de.Form = function(args) {
       url = url.replace(":recordId", "");
       method = 'POST';
     }
+	
+	const getCircularReplacer = () => {
+    const seen = new WeakSet();
+    return (key, value) => {
+    if (typeof value === "object" && value !== null) {
+      if (seen.has(value)) {
+        return;
+      }
+      seen.add(value);
+    }
+    return value;
+    };
+    };
 
     $.extend(formData, this.getValue());
     var that = this;
@@ -710,7 +723,7 @@ edu.common.de.Form = function(args) {
       headers: this.customHdrs,
       contentType: 'application/json',
       dataType: 'json',
-      data: JSON.stringify(formData)
+      data: JSON.stringify(formData,getCircularReplacer())
     }).done(function(data) { 
       that.formDiv.removeClass('de-form-submitting');
       that.recordId = data.id;

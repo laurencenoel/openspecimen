@@ -63,7 +63,7 @@ angular.module('os.biospecimen.specimen.addderivative', [])
     };
 
     $scope.createDerivative = function() {
-		window.alert("ADD DERIVATIVE create deriv");
+	 //window.alert("ADD DERIVATIVE create deriv");
       SpecimenUtil.createDerivatives($scope);
     };
 
