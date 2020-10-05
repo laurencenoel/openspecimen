@@ -6,11 +6,13 @@ angular.module('os.biospecimen.specimen.addderivative', [])
     Specimen, SpecimensHolder, SpecimenUtil, Container, ExtensionsUtil, Alerts) {
 
     function init() {
+	  window.alert("init");
       $scope.showForm = false;
       $scope.cpr = cpr;
       $scope.visit = visit;
 
       var ps = $scope.parentSpecimen = specimen;
+	  document.write("SPECIMEN");
 
       var opts = {incrFreezeThawCycles: incrFreezeThawCycles};
       var derivative = $scope.derivative = SpecimenUtil.getNewDerivative($scope, opts);
