@@ -23,7 +23,7 @@ angular.module('os.biospecimen.specimen.addderivative', [])
 		window.alert("hasSde");
         var groups = SpecimenUtil.sdeGroupSpecimens(cpDict, derivedFields || [], [derivative], {});
         if (groups.length == 1 && !groups[0].noMatch) {
-		  window.alert(JSON.stringify(specimen.children);
+		  window.alert(JSON.stringify(specimen.children));
           delete specimen.children;
           SpecimensHolder.setSpecimens([specimen]);
           $state.go('specimen-bulk-create-derivatives', {}, {location: 'replace'});
