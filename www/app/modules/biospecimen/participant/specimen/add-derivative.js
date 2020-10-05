@@ -6,14 +6,12 @@ angular.module('os.biospecimen.specimen.addderivative', [])
     Specimen, SpecimensHolder, SpecimenUtil, Container, ExtensionsUtil, Alerts) {
 
     function init() {
-	  window.alert("init");
+	  //window.alert("init");
       $scope.showForm = false;
       $scope.cpr = cpr;
       $scope.visit = visit;
 
       var ps = $scope.parentSpecimen = specimen;
-	  window.alert(ps);
-	  window.alert(specimen.lineage);
 
       var opts = {incrFreezeThawCycles: incrFreezeThawCycles};
       var derivative = $scope.derivative = SpecimenUtil.getNewDerivative($scope, opts);
@@ -22,8 +20,10 @@ angular.module('os.biospecimen.specimen.addderivative', [])
 	 
 
       if (hasSde) {
+		window.alert("hasSde");
         var groups = SpecimenUtil.sdeGroupSpecimens(cpDict, derivedFields || [], [derivative], {});
         if (groups.length == 1 && !groups[0].noMatch) {
+		  window.alert(JSON.stringify(specimen.children);
           delete specimen.children;
           SpecimensHolder.setSpecimens([specimen]);
           $state.go('specimen-bulk-create-derivatives', {}, {location: 'replace'});
@@ -37,6 +37,7 @@ angular.module('os.biospecimen.specimen.addderivative', [])
       ];
 
       if (hasDict) {
+		window.alert("hasDict");
         $scope.spmnCtx = {
           obj: {specimen: $scope.derivative},
           inObjs: ['specimen'], exObjs: exObjs,
