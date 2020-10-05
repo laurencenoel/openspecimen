@@ -12,12 +12,14 @@ angular.module('os.biospecimen.specimen.addderivative', [])
       $scope.visit = visit;
 
       var ps = $scope.parentSpecimen = specimen;
-	  document.write("SPECIMEN");
+	  window.alert(ps);
+	  window.alert(specimen.lineage);
 
       var opts = {incrFreezeThawCycles: incrFreezeThawCycles};
       var derivative = $scope.derivative = SpecimenUtil.getNewDerivative($scope, opts);
       derivative.labelFmt = cpr.derivativeLabelFmt;
       derivative.parent = new Specimen(ps);
+	 
 
       if (hasSde) {
         var groups = SpecimenUtil.sdeGroupSpecimens(cpDict, derivedFields || [], [derivative], {});
