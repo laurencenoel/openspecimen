@@ -2955,7 +2955,7 @@ edu.common.de.Signature = function(id, field, args) {
           headers: args.customHdrs,
           contentType: 'application/json',
           dataType: 'json',
-          data: JSON.stringify({dataUrl: dataUrl})
+          data: JSON.stringify(JSON.decycle({dataUrl: dataUrl}))
         }).done(function(data) {
           that.setValue(that.recId, data.fileId, dataUrl);
         }).fail(function(data) {
