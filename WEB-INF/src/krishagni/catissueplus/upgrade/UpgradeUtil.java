@@ -68,7 +68,7 @@ public class UpgradeUtil {
 	public static void initializeDE(Properties prop, DataSource ds) {
 		String dir = new StringBuilder(prop.getProperty("jboss.home.dir")).append(File.separator)
 				.append("os-data").append(File.separator)
-				.append("de-file-data").append(File.separator)
+				.append("de-file-data2").append(File.separator)
 				.toString();
 		File dirFile = new File(dir);
 		
@@ -86,7 +86,7 @@ public class UpgradeUtil {
 	public static Properties loadInstallProps() {
 		try {
 			Properties prop = new Properties();
-			prop.load(new FileInputStream("caTissueInstall.properties"));
+			prop.load(new FileInputStream("caeTissueInstall.properties"));
 			return prop;					
 		} catch (Exception e) {
 			throw new RuntimeException("Error loading install properties file", e);
