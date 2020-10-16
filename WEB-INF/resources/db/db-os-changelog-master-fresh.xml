@@ -124,6 +124,7 @@
 
   <include file="db/7.0/seed-data.xml"/>
   <include file="db/7.1/permissible-values.xml"/>
+  <include file="db/7.2/permissible-values.xml"/>
 
   <!-- Views are created always at the last -->
   <include file="db/views.xml"/>
