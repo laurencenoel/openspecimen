@@ -4,3 +4,4 @@
 "getNextPvId()",ARM,UBERON_0001460,,"arm","anatomic_site"
 "getNextPvId()",LEG,UBERON_0000978,,"leg","anatomic_site"
 "getNextPvId()",YOL,UBERON_0001040,,"yolk sac","anatomic_site"
+"getNextPvId()",HED,UBERON_0000033,,"head","anatomic_site"
