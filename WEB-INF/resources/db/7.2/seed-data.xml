@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+  
+
+  <changeSet author="lnoel" id="Delete existing abbreviations">
+    <sql>
+      delete from os_pv_props where name = 'abbreviation';
+    </sql>
+  </changeSet>
+  
+
+  <changeSet author="lnoel" id="insert abbreviations">
+    <sql>
+INSERT INTO os_pv_props (pv_id, name, value)
+ ('174', 'abbreviation', 'RNA'),
+ ('175', 'abbreviation', 'RNA'),
+ ('176', 'abbreviation', 'MOL'),
+ ('177', 'abbreviation', 'PRO'),
+ ('178', 'abbreviation', 'DNA'),
+ ('179', 'abbreviation', 'RNA'),
+ ('180', 'abbreviation', 'DNA'),
+ ('181', 'abbreviation', 'RNA'),
+ ('182', 'abbreviation', 'TNA'),
+ ('183', 'abbreviation', 'WGA'),
+ ('184', 'abbreviation', 'DNA'),
+ ('185', 'abbreviation', 'CEL'),
+ ('186', 'abbreviation', 'CPE'),
+ ('187', 'abbreviation', 'CBL'),
+ ('188', 'abbreviation', 'TIS'),
+ ('189', 'abbreviation', 'TSL'),
+ ('190', 'abbreviation', 'TBL');
+    </sql>
+  </changeSet>
+
+ 
+</databaseChangeLog>
