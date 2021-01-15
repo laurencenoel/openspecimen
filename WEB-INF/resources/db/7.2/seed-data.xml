@@ -16,6 +16,7 @@
   <changeSet author="lnoel" id="insert abbreviations">
     <sql>
 INSERT INTO os_pv_props (pv_id, name, value)
+VALUES
  ('174', 'abbreviation', 'RNA'),
  ('175', 'abbreviation', 'RNA'),
  ('176', 'abbreviation', 'MOL'),
