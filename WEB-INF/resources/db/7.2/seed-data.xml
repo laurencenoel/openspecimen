@@ -33,7 +33,10 @@ VALUES
  ('187', 'abbreviation', 'CBL'),
  ('188', 'abbreviation', 'TIS'),
  ('189', 'abbreviation', 'TSL'),
- ('190', 'abbreviation', 'TBL');
+ ('190', 'abbreviation', 'TBL'),
+ ('191', 'abbreviation', ''),
+ ('192', 'abbreviation', ''),
+ ('193', 'abbreviation', '');
     </sql>
   </changeSet>
 
