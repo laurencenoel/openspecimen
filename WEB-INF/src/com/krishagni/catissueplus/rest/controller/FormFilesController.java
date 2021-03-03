@@ -70,8 +70,8 @@ public class FormFilesController {
 		req.setFileId(fileId);
 		
 		FileDetail file = response(formSvc.getFileDetail(request(req)));
-		fileCheck = new File(file.getPath());
-		path = file.getPath();
+		File fileCheck = new File(file.getPath());
+		String path = file.getPath();
 		if (!fileCheck.exists()) {
 				path = path.replaceFirst("file2","file");
 			}
