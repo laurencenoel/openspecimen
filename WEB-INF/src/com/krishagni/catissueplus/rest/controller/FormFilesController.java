@@ -70,7 +70,13 @@ public class FormFilesController {
 		req.setFileId(fileId);
 		
 		FileDetail file = response(formSvc.getFileDetail(request(req)));
+		/*fileCheck = new File(file.getPath());
+		path = file.getPath();
+		if (!fileCheck.exists()) {
+				path = path.replaceFirst("file2","file");
+			}*/
 		Utility.sendToClient(response, file.getFilename(), file.getContentType(), new File(file.getPath()));
+		//Utility.sendToClient(response, file.getFilename(), file.getContentType(), new File(path));
 	}
 
 	@RequestMapping(method = RequestMethod.GET, value="/{fileId:.+}")
@@ -89,8 +95,11 @@ public class FormFilesController {
 
 		File file = new File(DeConfiguration.getInstance().fileUploadDir() + File.separator + fileId);
 		if (!file.exists()) {
-			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
-			return;
+			file = new File(DeConfiguration.getInstance().fileUploadDir().replaceFirst("file2","file") + File.separator + fileId);
+			if (!file.exists()) {
+				response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+				return;
+			}
 		}
 
 		Utility.sendToClient(response, filename, contentType, file);

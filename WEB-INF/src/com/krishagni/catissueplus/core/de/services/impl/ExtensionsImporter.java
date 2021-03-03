@@ -225,10 +225,6 @@ public class ExtensionsImporter implements ObjectImporter<Map<String, Object>, M
 		FileInputStream fin = null;
 		try {
 			File fileToUpload = new File(filesDir + File.separator + filename);
-			if (!fileToUpload.exists()) {
-				filesDir = filesDir.replaceFirst("file2","file");
-				fileToUpload = new File(filesDir + File.separator + filename);
-			}
 			fin = new FileInputStream(fileToUpload);
 			String fileId = FileUploadMgr.getInstance().saveFile(fin, extn);
 
