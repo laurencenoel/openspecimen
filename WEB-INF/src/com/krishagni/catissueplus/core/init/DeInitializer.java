@@ -79,7 +79,7 @@ public class DeInitializer implements InitializingBean {
 		String dataDir = cfgSvc.getDataDir();
 		
 		String dir = new StringBuilder(dataDir).append(File.separator)
-			.append("de-file-data").append(File.separator)
+			.append("de-file2-data").append(File.separator)
 			.toString();
 		
 		File dirFile = new File(dir);

@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Date;
 
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -69,8 +70,12 @@ public class ExtensionsUtil {
 
 	private static Map<String, String> uploadFile(String filesDir, String filename) {
 		FileInputStream fin = null;
+		
 		try {
 			File fileToUpload = new File(filesDir + File.separator + filename);
+			if (!fileToUpload.exists()) {
+				fileToUpload = fileToUpload.replaceFirst("file2","file");
+			}
 			fin = new FileInputStream(fileToUpload);
 			String fileId = FileUploadMgr.getInstance().saveFile(fin);
 
@@ -81,6 +86,7 @@ public class ExtensionsUtil {
 
 			return fileDetail;
 		} catch (FileNotFoundException fnfe) {
+			
 			throw OpenSpecimenException.userError(FormErrorCode.UPLOADED_FILE_NOT_FOUND, filename);
 		} finally {
 			IOUtils.closeQuietly(fin);

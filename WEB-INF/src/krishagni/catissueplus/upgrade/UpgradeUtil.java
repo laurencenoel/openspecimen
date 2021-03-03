@@ -68,11 +68,12 @@ public class UpgradeUtil {
 	public static void initializeDE(Properties prop, DataSource ds) {
 		String dir = new StringBuilder(prop.getProperty("jboss.home.dir")).append(File.separator)
 				.append("os-data").append(File.separator)
-				.append("de-file-data").append(File.separator)
+				.append("de-file2-data").append(File.separator)
 				.toString();
+				
 		File dirFile = new File(dir);
 		
-		if (!dirFile.exists()) {
+		if (!dirFile.exists()) {					
 			if (!dirFile.mkdirs()) {
 				throw new RuntimeException("Error couldn't create directory for storing de file data");
 			}
